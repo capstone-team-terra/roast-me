@@ -1,23 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  async function handleSubmit(e) {
+  function handleSubmit(e) {
     //axios.post("/handleUpload")
     e.preventDefault();
     // const data = { name: value };
     // console.log('submit');
     // console.log(value);
-    await fetch('http://127.0.0.1:3145/handleUpload', {
+    //fetch('http://127.0.0.1:3145/handleUpload', {
+    //  method: 'POST',
+    //   headers: {
+    //     'Content-type': 'application/json',
+    //   },
+    //   body: JSON.stringify(data),
+    // })
+    //   .then(res => res.json())
+    //   .then(res => console.log(res));
+    fetch('http://127.0.0.1:3145/handleUpload', {
       method: 'POST',
       headers: {
-        'Content-type': 'application/json',
-      },
-      //body: JSON.stringify(data),
-    })
-      .then(res => res.json())
-      .then(res => console.log(res));
+        'Access-Control-Allow-Origin': '*'
+      }
+    })//.then(res => res.json()).then(data => {
+    //  setCurrentTime(data.time);
+    //});
+    console.log('SUCCESS!')
   }
 
   return (
