@@ -6,7 +6,7 @@ from flask_cors import CORS
 from werkzeug.utils import secure_filename
 from results import runThis
 
-UPLOAD_FOLDER = './uploads'
+UPLOAD_FOLDER = '.'
 ALLOWED_EXTENSIONS = {'csv'}
 
 app = Flask(__name__)
