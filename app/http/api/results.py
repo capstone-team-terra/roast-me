@@ -1,7 +1,7 @@
 import pandas as pd
 
 def runThis():
-  df = pd.read_csv (r'./NetflixViewingHistory.csv')
+  df = pd.read_csv ('uploads/NetflixViewingHistory.csv')
   dict = {}
   def countShow(title):
     #We Bare Bears is We Bare Bears regardless of whether I'm watching Season 4 Episode 19 or Season 3 Episode 2
@@ -17,5 +17,7 @@ def runThis():
     else:
         dict[showName] = 1
   #we can use .apply() which takes a callback function. it's like array.map(func) in JS
+  #df['Title'].apply(lambda x: countShow(x))
+  df['Title'] = df['Title'].astype('str')
   df['Title'].apply(lambda x: countShow(x))
   return dict
