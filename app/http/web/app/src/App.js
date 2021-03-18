@@ -2,8 +2,12 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  function handleSubmit(e) {
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+  async handleSubmit(e) {
     //axios.post("/handleUpload")
     e.preventDefault();
     // const data = { name: value };
@@ -18,27 +22,32 @@ function App() {
     // })
     //   .then(res => res.json())
     //   .then(res => console.log(res));
-    fetch('http://127.0.0.1:3145/handleUpload', {
+    console.log(e.target)
+    const data = new FormData();
+    data.append('submission',e.target[0].files[0] );
+    const res = await fetch('http://127.0.0.1:3145/handleUpload', {
       method: 'POST',
       headers: {
-        'Access-Control-Allow-Origin': '*'
-      }
-    })//.then(res => res.json()).then(data => {
-    //  setCurrentTime(data.time);
-    //});
-    console.log('SUCCESS!')
+        'Access-Control-Allow-Origin': '*',
+      },
+      body: data
+    })
+    var jsonRes = await res.json();
+    console.log(jsonRes);
   }
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <form action="/handleUpload" method="post" encType="multipart/form-data" onSubmit={handleSubmit}>
-            Choose the file: <input type="file" name="submission"/> <br />
-            <input type="submit" value="Upload"/>
-        </form> 
-      </header>
-    </div>
-  );
+  render(){ 
+    return (
+      <div className="App">
+        <header className="App-header">
+          <form action="/handleUpload" method="post" encType="multipart/form-data" onSubmit={this.handleSubmit}>
+              Choose the file: <input type="file" name="submission"/> <br />
+              <input type="submit" value="Upload"/>
+          </form> 
+        </header>
+      </div>
+    );
+  }
 }
 
 export default App;
