@@ -8,14 +8,15 @@ def pickleThis():
 
     df_origin_history['rootName'] = df_origin_history['Title'].apply(
         lambda q: q.split(":")[0] if type(q) == str else q)
-    df_origin_history['rootName_lower'] = df_origin_history['rootName'].apply(
+    df_origin_history['root_lower'] = df_origin_history['rootName'].apply(
         lambda s: s.lower() if type(s) == str else s)
-    df_origin_ratings['title_lower'] = df_origin_ratings['primaryTitle'].apply(
+    df_origin_ratings['root_lower'] = df_origin_ratings['primaryTitle'].apply(
         lambda s: s.lower() if type(s) == str else s)
+    df_origin_ratings = df_origin_ratings.sort_values(by=['numVotes'], ascending=False).drop_duplicates(subset='primaryTitle', keep='first')
     df_merged = df_origin_history.merge(
-        df_origin_ratings, how="left", left_on="rootName_lower", right_on="title_lower")
-    del df_merged['title_lower']
-    del df_merged['rootName']
+        df_origin_ratings, how="inner", on="root_lower")
+    df_merged = df_merged.drop_duplicates(subset='primaryTitle', keep='first')
+
 
     mergedData_file = 'merged_data.pkl'
     pickle.dump(df_merged, open(mergedData_file, 'wb'))
