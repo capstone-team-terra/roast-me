@@ -6,6 +6,8 @@ from flask_cors import CORS
 from werkzeug.utils import secure_filename
 from results import runThis
 from pickleData import pickleThis
+from charts.TopGenres import genresCounter
+
 UPLOAD_FOLDER = '.'
 ALLOWED_EXTENSIONS = {'csv'}
 
@@ -25,12 +27,11 @@ def allowed_file(filename):
 
 @app.route("/done")
 def results():
-    dictionary = runThis()
     pickleThis()
-    # print(dictionary)
-    # return render_template('results.html', value=dictionary)
-    # return render_template('results.html')
-    return dictionary
+    dictionary1 = runThis()
+    dictionary2 = genresCounter()
+    return {'genres': dictionary2,
+            'views': dictionary1}
 
 
 @app.route("/handleUpload", methods=['POST'])
