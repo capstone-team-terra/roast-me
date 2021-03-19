@@ -5,7 +5,7 @@ from collections import Counter
 
 def genresCounter():
     df = pd.read_pickle(
-        '/Users/shui/Desktop/grace-hopper/roast-me/app/http/api/merged_data.pkl')
+        './merged_data.pkl')
     # change the path when testing
     list_of_genres = df['genres'].to_list()
     df['genre_ls'] = df['genres'].apply(

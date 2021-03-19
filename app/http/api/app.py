@@ -7,6 +7,7 @@ from werkzeug.utils import secure_filename
 from results import runThis
 from pickleData import pickleThis
 from charts.TopGenres import genresCounter
+from charts.MostPopular import popularityCounter
 
 UPLOAD_FOLDER = '.'
 ALLOWED_EXTENSIONS = {'csv'}
@@ -30,8 +31,10 @@ def results():
     pickleThis()
     dictionary1 = runThis()
     dictionary2 = genresCounter()
+    dictionary3 = popularityCounter()
     return {'genres': dictionary2,
-            'views': dictionary1}
+            'views': dictionary1,
+            'popularity': dictionary3}
 
 
 @app.route("/handleUpload", methods=['POST'])
