@@ -34,7 +34,7 @@ export default function ShowsCount(props) {
     maintainAspectRatio: false,
     title: {
       display: true,
-      text: "View Frequency",
+      text: "View Count per Show ",
       fontSize: 25,
     },
   };
