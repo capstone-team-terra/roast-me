@@ -31,13 +31,12 @@ export default function ViewCount(props) {
     maintainAspectRatio: false,
     title: {
       display: true,
-      text: "View Count per Date",
+      text: "Your View Count History",
       fontSize: 25,
     },
   };
   return (
     <div>
-      <h1>Your view count Chart</h1>
       <div>
         <Line data={resultData} options={options} width={800} height={600} />
       </div>

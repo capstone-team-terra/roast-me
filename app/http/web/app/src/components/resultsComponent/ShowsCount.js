@@ -40,7 +40,6 @@ export default function ShowsCount(props) {
   };
   return (
     <div>
-      <h1>Your Top View Result</h1>
       {sorted.length !== 0 ? (
         <div>
           <h2>
@@ -51,7 +50,7 @@ export default function ShowsCount(props) {
             <span style={{ color: "red" }}>{sorted[sorted.length - 1][1]}</span>{" "}
             times!
           </h2>
-          <h3>Top 3 Results</h3>
+          <h3 style={{ textAlign: "center" }}>Top 3 Results</h3>
           <ol
             style={{
               display: "flex",
