@@ -1,7 +1,7 @@
 import React from "react";
 import { Bar } from "react-chartjs-2";
 
-export default function SingleResult(props) {
+export default function ShowsCount(props) {
   const { result } = props;
 
   //convert data object to arrays
