@@ -1,6 +1,6 @@
 import React from "react";
 import ShowsCount from "./ShowsCount";
-
+import GenresCount from "./GenresCount";
 export class AllResults extends React.Component {
   constructor() {
     super();
@@ -18,11 +18,12 @@ export class AllResults extends React.Component {
     if (!this.state.loaded) {
       return "No results available at this moment!";
     }
-    console.log("allresults state---->", this.state);
+
     return (
       <div>
         <h2>All Results</h2>
         <ShowsCount result={this.state.result.views} />
+        <GenresCount result={this.state.result.genres} />
       </div>
     );
   }
