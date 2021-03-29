@@ -1,0 +1,31 @@
+.App {
+  /* text-align: center; */
+}
+
+.App-header {
+  /* background-color: #282c34; */
+  background-color: #000000;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.netflix-red {
+  color: #db0000;
+}
+
+/* .chart-card {
+  background-color: "rgb(34, 36, 41)";
+        box-shadow: "0 0 6px rgba(0, 0, 0, 0.1)",
+        maxWidth: "500px",
+        height: "500px",
+        borderRadius: "10px",
+        overflow: "hidden",
+        paddingTop: "1em",
+        paddingBotton: "2em",
+        color: "rgb(224, 228, 228)",
+} */
