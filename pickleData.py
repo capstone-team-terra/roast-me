@@ -4,7 +4,8 @@ import pandas as pd
 
 def pickleThis(data):
     df_origin_history = pd.read_csv(data)
-    df_origin_ratings = pd.read_csv('https://firebasestorage.googleapis.com/v0/b/roastflix-a53f3.appspot.com/o/ratings.csv?alt=media&token=5e36d2fb-ea31-43aa-9857-5e77c2f5a1e7')
+    df_origin_ratings = pd.read_csv(
+        'https://firebasestorage.googleapis.com/v0/b/roastflix-a53f3.appspot.com/o/ratings.csv?alt=media&token=5e36d2fb-ea31-43aa-9857-5e77c2f5a1e7')
 
     df_origin_history['rootName'] = df_origin_history['Title'].apply(
         lambda q: q.split(":")[0] if type(q) == str else q)
@@ -14,9 +15,15 @@ def pickleThis(data):
         lambda s: s.lower() if type(s) == str else s)
     df_origin_ratings = df_origin_ratings.sort_values(
         by=['numVotes'], ascending=False).drop_duplicates(subset='primaryTitle', keep='first')
+    show_details = df_origin_history.Title.str.split(":", expand=True, n=2)
+    df_origin_history['season'] = show_details[1]
+    df_origin_history['show_type'] = df_origin_history.apply(
+        lambda x: 'Movie' if pd.isnull(x['season']) else 'TV Show', axis=1)
     df_merged = df_origin_history.merge(
         df_origin_ratings, how="inner", on="root_lower")
     # df_merged = df_merged.drop_duplicates(subset='primaryTitle', keep='first')
+    df_merged = df_merged[["primaryTitle", "averageRating",
+                           "numVotes", "Title", "show_type", "runtimeMinutes", "genres"]]
     return df_merged
     #mergedData_file = 'merged_data.pkl'
     #pickle.dump(df_merged, open(mergedData_file, 'wb'))
