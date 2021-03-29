@@ -4,14 +4,14 @@ import { Card } from "react-bootstrap";
 
 
 export default function ShowsCount(props) {
-  let { result, topShow } = props;
+  let { percents, score, topShow, bottomShows } = props.result;
 
-  result.forEach( num => {
+  percents.forEach( num => {
     return Number(num).toFixed(2)
   })
   const data = {
     datasets: [{
-        data: result,
+        data: percents,
         backgroundColor: ["#E50914", "#5CDB95", "#000000"]
     }],
 
@@ -57,11 +57,19 @@ export default function ShowsCount(props) {
       How mainstream your tastes are{" "}
     </Card.Title>
     <div>
-      <Doughnut data={data} options={options} width={800} height={600} />
+      <Doughnut data={data} options={options} width={600} height={450} />
     </div>
     <p style={{ fontSize: "20px", fontStyle: "italic" }}>
-      {Math.ceil(result[0])}% of what you watched is mainstream{" "}. {topShow}? Come on.
+      <span style={{ color: "rgba(234, 87, 102)" }}>{Math.ceil(percents[0])}%</span> of
+      what you watched was pretty mainstream.
     </p>
+    <p style={{ fontSize: "15px", fontStyle: "italic" }}>
+      The most popular were:{" "} <strong>{topShow.join(' - ')}</strong>.
+    </p>
+    <p style={{ fontSize: "15px", fontStyle: "italic" }}>
+      Your hidden gems were:{" "} <strong>{bottomShows.join(' - ')}</strong>.
+    </p>
+    <p style={{ fontSize: "10px", fontStyle: "italic" }}>Do better.</p>
   </Card>
   );
 }

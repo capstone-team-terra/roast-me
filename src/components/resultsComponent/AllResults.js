@@ -48,8 +48,7 @@ export class AllResults extends React.Component {
           </Row>
           <Row className="justify-content-center">
             <PopularityCount
-              result={this.state.result.popularity.percents}
-              topShow={this.state.result.popularity.topShow}
+              result={this.state.result.popularity}
             />
           </Row>
         </div>
