@@ -13,6 +13,7 @@ class UploadPage extends React.Component {
       loaded: false,
       Loading: false,
       fileChosen: false,
+      username: props.username
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -54,16 +55,7 @@ class UploadPage extends React.Component {
       body: downloadURL
     })
     const userObj = {}
-    const username = 'dany' // <---- PLACEHOLDER
-    //<vvvv this code belongs in the sign up form vvvvv> 
-    //<vvvv here temporarily for testing purposes vvvvv>
-    app.database().ref().child(username).once("value", snap => {
-      if (snap.exists()) {
-        console.log('ERR: USERNAME ALREADY TAKEN')
-      }
-    })
-    //<^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^>
-    userObj[username] = downloadURL
+    userObj[this.state.username] = downloadURL
     await app.database().ref().update(userObj)
 
     // if (e.target[0].files.length > 0) {
