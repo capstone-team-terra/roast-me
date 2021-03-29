@@ -1,126 +1,92 @@
-import React, { useState } from "react";
-import { Button, Container, Row, Col } from "react-bootstrap";
-import UploadPage from "./UploadPage";
-import Sample from "./Sample";
-import Typewriter from "typewriter-effect";
+import React, {useState} from 'react'
+import {Button, Container, Row, Col} from 'react-bootstrap'
+import SignUp from './SignUp'
+import Sample from './Sample'
 
 const GetStarted = () => {
-  const [showInstruction, setShowInstruction] = useState(false);
-  const [no, setNo] = useState(false);
-  const [showSample, setShowSample] = useState(false);
-  const [okButtonDisplay, setOkButtonDisplay] = useState("inline");
-  const [noButtonColor, setNoButtonColor] = useState("outline-light");
-
-  const [typingDone1, setTypingDone1] = useState(false);
-  const [typingDone2, setTypingDone2] = useState(false);
+  const [showInstruction, setShowInstruction] = useState(false)
+  const [no, setNo] = useState(false)
+  const [showSample, setShowSample] = useState(false)
+  const [okButtonDisplay, setOkButtonDisplay] = useState('inline')
+  const [noButtonColor, setNoButtonColor] = useState('light')
 
   const handleOkButton = () => {
-    setShowInstruction(true);
-  };
+    setShowInstruction(true)
+  }
 
   const handleNoButton = () => {
-    setNo(true);
-    setOkButtonDisplay("none");
-    setNoButtonColor("dark");
-  };
+    setNo(true)
+    setOkButtonDisplay('none')
+    setNoButtonColor('dark')
+  }
 
   const handleSampleButton = () => {
-    setShowSample(true);
-  };
-
-  const handleDoneTyping1 = () => {
-    setTypingDone1(true);
-  };
-  const handleDoneTyping2 = () => {
-    setTypingDone2(true);
-  };
+    setShowSample(true)
+  }
 
   return (
     <div>
       {showInstruction ? (
-        <UploadPage />
+        <SignUp />
       ) : showSample ? (
         <Sample />
       ) : (
         <Container className="text-left">
-          <Row>
-            <Typewriter
-              onInit={(typewriter) => {
-                typewriter
-                  .typeString(
-                    "To get started, I will need to see your Netflix viewing history."
-                  )
-                  .pauseFor(1500)
-                  .callFunction(() => {
-                    handleDoneTyping1();
-                  })
-                  .start();
-              }}
-              options={{
-                delay: 35,
-              }}
-            />
+          <Row className="mb-1">
+            <p>
+              To get started, I will need to see your Netflix viewing history.
+              <br />
+              Don't worry, I will just take a look at what you watched. I won't
+              post or change anything.
+            </p>
           </Row>
-          {typingDone1 && (
-            <Row>
-              <Col md={12} className="mt-3 mb-3">
-                <Button
-                  variant="outline-light"
-                  onClick={handleOkButton}
-                  style={{ display: okButtonDisplay }}
-                >
-                  Ok, Got it
-                </Button>
-              </Col>
-              <Col md={12}>
-                <Button variant={noButtonColor} onClick={handleNoButton}>
-                  No I don't want to share my view history
-                </Button>
-              </Col>
-            </Row>
-          )}
+          <Row className="mb-3">
+            <Col>
+              <Button
+                variant="light"
+                onClick={handleOkButton}
+                style={{display: okButtonDisplay}}
+              >
+                Ok, Got it
+              </Button>
+            </Col>
+          </Row>
+          <Row className="mb-3">
+            <Col>
+              <Button
+                variant={noButtonColor}
+                onClick={handleNoButton}
+                className="mb-5"
+              >
+                No I don't want to share my view history
+              </Button>
+            </Col>
+          </Row>
           {no && (
-            <div className="mt-3">
-              <Typewriter
-                onInit={(typewriter) => {
-                  typewriter
-                    .typeString(
-                      "Well, I can't judge your taste without seeing your Netflix view history. <br /> If you really don't want to, you can check out our analysis based on sample data."
-                    )
-                    .pauseFor(1500)
-                    .callFunction(() => {
-                      handleDoneTyping2();
-                    })
-                    .start();
-                }}
-                options={{
-                  delay: 35,
-                }}
-              />
-              {typingDone2 && (
-                <Row>
-                  <Col md={12} className="mt-3 mb-3">
-                    <Button variant="outline-light" onClick={handleOkButton}>
-                      Ok, fine. I will share my view history
-                    </Button>
-                  </Col>
-                  <Col md={12}>
-                    <Button
-                      variant="outline-light"
-                      className="mb-5"
-                      onClick={handleSampleButton}
-                    >
-                      Show me your sample analysis first
-                    </Button>
-                  </Col>
-                </Row>
-              )}
+            <div>
+              <p>
+                I can't judge your Netflix without seeing your view history.{' '}
+                <br />
+                Do you want to see our analysis skill using our sample data ?
+              </p>
+              <Button
+                variant="light"
+                className="mb-5"
+                onClick={handleSampleButton}
+              >
+                Show me your sample analysis
+              </Button>
+              <p className="mt-5">or..... have you changed your mind ?</p>
+
+              <Button variant="light" onClick={handleOkButton}>
+                Ok, fine
+              </Button>
             </div>
           )}
         </Container>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default GetStarted;
+export default GetStarted

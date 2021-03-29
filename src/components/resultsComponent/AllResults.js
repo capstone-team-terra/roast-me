@@ -49,10 +49,7 @@ export class AllResults extends React.Component {
             </Col>
           </Row>
           <Row className="justify-content-center">
-            <PopularityCount
-              result={this.state.result.popularity.percents}
-              topShow={this.state.result.popularity.topShow}
-            />
+            <PopularityCount result={this.state.result.popularity} />
           </Row>
         </div>
       )
@@ -69,8 +66,7 @@ export class AllResults extends React.Component {
                 '> Your Netflix was hot-topic-threw-up-on-you-awkward-middle-school-family-friendly-comedy bad.'
               )
               .start()
-              .pauseFor(2000)
-              .deleteAll()
+              .pauseFor(1000)
               .callFunction(() => {
                 this.handleDoneTyping()
               })
