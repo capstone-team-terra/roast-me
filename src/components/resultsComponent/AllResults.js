@@ -6,6 +6,7 @@ import PopularityCount from "./PopularityCount";
 import RunTime from "./RunTime";
 import Typewriter from "typewriter-effect";
 import { Col, Row } from "react-bootstrap";
+import Summary from "./Summary"
 
 export class AllResults extends React.Component {
   constructor() {
@@ -30,6 +31,7 @@ export class AllResults extends React.Component {
         "No results available at this moment!"
       ) : (
         <div>
+          <Summary {...this.state.result} />
           <Row className="justify-content-center">
             <Col md={6}>
               <ShowsCount result={this.state.result.views} />

@@ -197,8 +197,8 @@ class ChatbotPage extends React.Component {
         <ThemeProvider theme={theme}>
           <ChatBot
             steps={steps}
-            width="1200px"
-            height="1000px"
+            width="80vw"
+            height="80vh"
             placeholder=" "
             hideBotAvatar="true"
             hideHeader="true"

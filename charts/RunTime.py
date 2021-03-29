@@ -3,7 +3,7 @@ import numpy as np
 
 
 def runTime(df_final):
-    #df_final = pd.read_pickle(
+    # df_final = pd.read_pickle(
     #    './merged_data.pkl')
 
     # convert date to date object & create new column "month_year" to show MM-YYYY
@@ -19,6 +19,18 @@ def runTime(df_final):
     month_group = df_runtime.groupby(['month_year'])
     sum_per_month = month_group['runtimeMinutes'].sum()
 
+    # generate score
+    # Scaling based on 2 days worth of hours (your average view hour per year = 48hrs, gets full point)
+    sumMin = sum_per_month.sum()
+    sumHrs = sumMin / 60
+    numMonths = sum_per_month.size
+    avgViewHoursPerYear = sumHrs/numMonths
+    score = 25 * (avgViewHoursPerYear / (2 * 24))
+
     # convert the series to dictionary
     dictionary = dict(zip(sum_per_month.index.format(), sum_per_month))
-    return dictionary
+
+    # add data & score in the final dictionary to be returned
+    final_dicationary = {"data": dictionary, "score": score}
+
+    return final_dicationary

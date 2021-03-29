@@ -5,15 +5,16 @@ import { Card } from "react-bootstrap";
 
 export default function RunTime(props) {
   const { result } = props;
+  const { data } = result;
 
   //convert data object to arrays
-  const resultsArr = Object.entries(result);
+  const resultsArr = Object.entries(data);
 
   //get only past 1 year data
   const pastYear = resultsArr.slice(-12);
 
   //total view time
-  const sumMin = Object.keys(result).reduce((acc, key) => acc + result[key], 0);
+  const sumMin = Object.keys(data).reduce((acc, key) => acc + data[key], 0);
   const sumHrs = Math.floor(sumMin / 60);
   const sumDays = Math.floor(sumHrs / 24);
   const sumMonth = Math.floor(sumDays / 30);
