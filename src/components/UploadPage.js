@@ -44,7 +44,7 @@ class UploadPage extends React.Component {
     }
     const fileRef = storageRef.child(keyGenerator(3)) // rename file here
     await fileRef.put(file)
-    await fileRef.put(file)
+    //await fileRef.put(file)
     const downloadURL = await fileRef.getDownloadURL()
     const res = await fetch("/handleUpload", {
       method: "POST",
@@ -53,6 +53,19 @@ class UploadPage extends React.Component {
       },
       body: downloadURL
     })
+    const userObj = {}
+    const username = 'dany' // <---- PLACEHOLDER
+    //<vvvv this code belongs in the sign up form vvvvv> 
+    //<vvvv here temporarily for testing purposes vvvvv>
+    app.database().ref().child(username).once("value", snap => {
+      if (snap.exists()) {
+        console.log('ERR: USERNAME ALREADY TAKEN')
+      }
+    })
+    //<^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^>
+    userObj[username] = downloadURL
+    await app.database().ref().update(userObj)
+
     // if (e.target[0].files.length > 0) {
     //   this.setState({
     //     loading: true,

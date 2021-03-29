@@ -4,4 +4,5 @@ public/bundle.js.map
 .DS_Store
 npm-debug.log
 yarn-error.log
-__pycache__
+charts/__pycache__
+merged_data.pkl
