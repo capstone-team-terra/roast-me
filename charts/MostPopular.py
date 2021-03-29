@@ -7,7 +7,8 @@ def popularityCounter(df):
     #df = pd.read_pickle(
     #    './merged_data.pkl')
     df = df.drop_duplicates(subset='primaryTitle', keep='first')
-    top = df[(df['numVotes'] > 30000) & (df['averageRating'] > 5)]['primaryTitle'].iloc[0]
+    top = df[(df['numVotes'] > 30000) & (df['averageRating'] > 5)]['primaryTitle'].iloc[0:5].array
+    bottom = df[(df['numVotes'] < 500) & (df['averageRating'] <= 5)]['primaryTitle'].iloc[0:5].array
     popularCount = len(df[(df['numVotes'] > 30000) &
                           (df['averageRating'] > 5)].index)
     unpopularCount = len(df[(df['averageRating'] < 5) &
@@ -17,4 +18,4 @@ def popularityCounter(df):
     unpopPercent = (unpopularCount / len(df.index)) * 100.0
     medPercent = (mediocre / len(df.index)) * 100.0
     popularityScore = popPercent * 0.25
-    return {'percents': [popPercent, unpopPercent, medPercent], 'score': popularityScore, 'topShow': top}
+    return {'percents': [popPercent, unpopPercent, medPercent], 'score': popularityScore, 'topShow': top, 'bottomShow': bottom}

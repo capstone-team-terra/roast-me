@@ -57,7 +57,7 @@ const results = {
     "2021-02": 4050,
     "2021-03": 4500,
   },
-  popularity: { percents: [20, 70, 10], score: 23, topShow: "Friends" },
+  popularity: { percents: [60, 10, 30], score: 23, topShow: ["Friends", "Pulp Fiction", "We Bare Bears"], bottomShows: ["Project Power", "The End of the Fucking World", "Repair Shop"]  },
 };
 
 const Sample = () => {
