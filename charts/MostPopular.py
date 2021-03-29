@@ -3,9 +3,9 @@ import pandas as pd
 # threshold ---> 33000
 
 
-def popularityCounter():
-    df = pd.read_pickle(
-        './merged_data.pkl')
+def popularityCounter(df):
+    #df = pd.read_pickle(
+    #    './merged_data.pkl')
     df = df.drop_duplicates(subset='primaryTitle', keep='first')
     top = df[(df['numVotes'] > 30000) & (df['averageRating'] > 5)]['primaryTitle'].iloc[0]
     popularCount = len(df[(df['numVotes'] > 30000) &

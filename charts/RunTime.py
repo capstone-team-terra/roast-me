@@ -2,9 +2,9 @@ import pandas as pd
 import numpy as np
 
 
-def runTime():
-    df_final = pd.read_pickle(
-        './merged_data.pkl')
+def runTime(df_final):
+    #df_final = pd.read_pickle(
+    #    './merged_data.pkl')
 
     # convert date to date object & create new column "month_year" to show MM-YYYY
     df_final["Date"] = pd.to_datetime(df_final["Date"], format='%m/%d/%y')

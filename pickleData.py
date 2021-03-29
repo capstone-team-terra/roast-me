@@ -17,6 +17,6 @@ def pickleThis(data):
     df_merged = df_origin_history.merge(
         df_origin_ratings, how="inner", on="root_lower")
     # df_merged = df_merged.drop_duplicates(subset='primaryTitle', keep='first')
-
-    mergedData_file = 'merged_data.pkl'
-    pickle.dump(df_merged, open(mergedData_file, 'wb'))
+    return df_merged
+    #mergedData_file = 'merged_data.pkl'
+    #pickle.dump(df_merged, open(mergedData_file, 'wb'))

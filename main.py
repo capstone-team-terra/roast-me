@@ -21,12 +21,12 @@ def index():
 def handleFileUpload():
     print('REQUEST ----> ', request.data)
     data = request.data.decode("utf-8") 
-    pickleThis(data)
+    df = pickleThis(data)
     mostViewed = viewsCounter(data)
-    topGenres = genresCounter()
-    mostPopular = popularityCounter()
+    topGenres = genresCounter(df)
+    mostPopular = popularityCounter(df)
     watchFreq = watchFrequency(data)
-    watchTime = runTime()
+    watchTime = runTime(df)
     return {'genres': topGenres,
             'views': mostViewed,
             'popularity': mostPopular,
