@@ -1,9 +1,7 @@
-Flask @ file:///home/ktietz/src/ci/flask_1611932660458/work
-json5==0.9.5
-numpy @ file:///opt/concourse/worker/volumes/live/5572694e-967a-4c0c-52cf-b53d43e72de9/volume/numpy_and_numpy_base_1603491881791/work
-numpydoc @ file:///tmp/build/80754af9/numpydoc_1605117425582/work
+Flask==1.1.2
+gunicorn==20.1.0
 pandas==1.2.3
-pandocfilters @ file:///opt/concourse/worker/volumes/live/c330e404-216d-466b-5327-8ce8fe854d3a/volume/pandocfilters_1605120442288/work
-pickleshare @ file:///tmp/build/80754af9/pickleshare_1606932040724/work
-python-jsonrpc-server @ file:///tmp/build/80754af9/python-jsonrpc-server_1600278539111/work
+json5==0.9.5
+numpy==1.20.2
+pandas==1.2.3
 gunicorn==20.1.0
