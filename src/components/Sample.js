@@ -64,7 +64,7 @@ const results = {
     percents: [60, 10, 30],
     score: 23,
     topShow: ['Friends', 'Pulp Fiction', 'We Bare Bears'],
-    bottomShows: [
+    bottomShow: [
       'Project Power',
       'The End of the Fucking World',
       'Repair Shop'

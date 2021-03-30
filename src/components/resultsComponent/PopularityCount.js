@@ -34,20 +34,18 @@ export default function ShowsCount(props) {
   return (
     <Card
       style={{
-        background: 'rgb(34, 36, 41)',
-        boxShadow: '0px 0px 10px 5px rgba(100, 100, 100, .6)',
-        maxWidth: '700px',
-        height: '690px',
-        borderRadius: '10px',
-        overflow: 'hidden',
-        paddingTop: '1.5em',
-        paddingRight: '1.5em',
-        paddingLeft: '1.5em',
-        paddingBottom: '1em',
-        margin: '1em',
-        color: 'rgb(224, 228, 228)',
-        display: 'flex',
-        justifyContent: 'space-between'
+        background: "rgb(10,10,10)",
+        boxShadow: "0px 0px 10px 5px rgba(100, 100, 100, .6)",
+        maxWidth: "90vw",
+        height: "690px",
+        paddingTop: "1.5em",
+        paddingRight: "1.5em",
+        paddingLeft: "1.5em",
+        paddingBottom: "1em",
+        margin: "1em",
+        color: "rgb(224, 228, 228)",
+        display: "flex",
+        justifyContent: "space-between",
       }}
     >
       <Card.Title style={{textAlign: 'center', fontSize: 30}}>

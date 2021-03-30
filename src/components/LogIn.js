@@ -2,6 +2,7 @@ import React from 'react'
 import {Button, Container, Row, Col} from 'react-bootstrap'
 import AllResults from './resultsComponent/AllResults'
 import {app} from '../base'
+import Loading from './resultsComponent/Loading'
 
 class LogIn extends React.Component {
   constructor() {
@@ -9,6 +10,8 @@ class LogIn extends React.Component {
     this.state = {
       loggedIn: false,
       attempt: false,
+      loading: false,
+      loaded: false,
       result: {}
     }
     this.handleLogIn = this.handleLogIn.bind(this)
@@ -16,6 +19,7 @@ class LogIn extends React.Component {
   handleLogIn(e) {
     e.preventDefault()
     const username = e.target.form[0].value
+    this.setState({loading: true,})
     app
       .database()
       .ref()
@@ -31,19 +35,21 @@ class LogIn extends React.Component {
             body: downloadURL
           })
           const jsonRes = await res.json()
-          this.setState({loggedIn: true, result: jsonRes})
+          this.setState({loggedIn: true, result: jsonRes, loading: false, loaded: true})
         } else {
           this.setState({attempt: true})
         }
       })
   }
-  render() {
+
+    render() {
     return (
       <Container>
-        {this.state.loggedIn ? (
+        {this.state.loaded && this.state.loggedIn ? (
           <AllResults result={this.state.result} />
-        ) : (
-          <form>
+        ) : this.state.loading ? (
+          <Loading />) : (
+            <form>
             <div className="form-group">
               <label>Enter your Username to access your results:</label>
               <Col>
@@ -67,7 +73,7 @@ class LogIn extends React.Component {
               <div> </div>
             )}
           </form>
-        )}
+          )}
       </Container>
     )
   }

@@ -75,9 +75,9 @@ export default function ShowsCount(props) {
   return (
     <Card
       style={{
-        background: "rgb(34, 36, 41)",
+        background: "rgb(10,10,10)",
         boxShadow: "0px 0px 10px 5px rgba(100, 100, 100, .6)",
-        maxWidth: "700px",
+        maxWidth: "90vw",
         height: "690px",
         paddingTop: "1.5em",
         paddingRight: "1.5em",

@@ -81,11 +81,11 @@ export default function ViewCount(props) {
     },
   };
   return (
-    <Card
+  <Card
       style={{
-        background: "rgb(34, 36, 41)",
+        background: "rgb(10,10,10)",
         boxShadow: "0px 0px 10px 5px rgba(100, 100, 100, .6)",
-        maxWidth: "700px",
+        maxWidth: "90vw",
         height: "690px",
         paddingTop: "1.5em",
         paddingRight: "1.5em",
@@ -98,7 +98,7 @@ export default function ViewCount(props) {
       }}
     >
       <Card.Title style={{ textAlign: "center", fontSize: 30 }}>
-        Total number of times you watched Netflix{" "}
+      Total number of times you watched Netflix{" "}
       </Card.Title>
       <div>
         <Line data={resultData} options={options} width={600} height={400} />
