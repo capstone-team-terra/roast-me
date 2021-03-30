@@ -3,7 +3,7 @@ import {Doughnut} from 'react-chartjs-2'
 import {Card} from 'react-bootstrap'
 
 export default function ShowsCount(props) {
-  let {percents, score, topShow, bottomShows} = props.result
+  let {percents, score, topShow, bottomShow} = props.result
 
   percents.forEach(num => {
     return Number(num).toFixed(2)
@@ -64,7 +64,7 @@ export default function ShowsCount(props) {
         The most popular were: <strong>{topShow.join(' - ')}</strong>.
       </p>
       <p style={{fontSize: '15px', fontStyle: 'italic'}}>
-        Your hidden gems were: <strong>{bottomShows.join(' - ')}</strong>.
+        Your hidden gems were: <strong>{bottomShow.join(' - ')}</strong>.
       </p>
       <p style={{fontSize: '10px', fontStyle: 'italic'}}>Do better.</p>
     </Card>
