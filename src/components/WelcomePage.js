@@ -46,12 +46,13 @@ class WelcomePage extends React.Component {
                 </h1>
                 <p>
                   Our sophisticated A.I. judges your awful taste in movies and
-                  TV shows. Don't worry if you don't have a Netflix account-we
+                  TV shows. <br />
+                  Don't worry if you don't have a Netflix account-we
                   have a surprise for you!
                 </p>
               </Col>
             </Row>
-            <Row>
+            <Row className="mt-5 justify-content-center">
               <Typewriter
                 onInit={typewriter => {
                   typewriter

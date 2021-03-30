@@ -1,62 +1,66 @@
-import React from "react";
-import ChatbotPage from "./chatComponent/ChatbotPage";
-import Typewriter from "typewriter-effect";
-import Instruction from "./Instruction";
-import { Form, Button, Card } from "react-bootstrap";
+import React from 'react'
+import ChatbotPage from './chatComponent/ChatbotPage'
+import Typewriter from 'typewriter-effect'
+import Instruction from './Instruction'
+import {Form, Button, Card} from 'react-bootstrap'
 import {app} from '../base'
 
 class UploadPage extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       result: {},
       loaded: false,
       Loading: false,
       fileChosen: false,
       username: props.username
-    };
-    this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
   componentDidMount() {
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0)
   }
   async handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault()
     const file = e.target[0].files[0]
     if (e.target[0].files.length > 0) {
       this.setState({
         loading: true,
         loaded: false,
         result: {},
-        fileChosen: true,
-      });
+        fileChosen: true
+      })
     } else {
-      console.log("no file chosen");
+      console.log('no file chosen')
     }
     const storageRef = app.storage().ref()
     function keyGenerator(n) {
-      const characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
-      let randomString = '';
+      const characters =
+        '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+      let randomString = ''
       for (let i = 0; i < n; i++) {
-          let index = Math.floor(Math.random() * ((characters.length) - 1));
-          randomString += characters[index];
+        let index = Math.floor(Math.random() * (characters.length - 1))
+        randomString += characters[index]
       }
-      return randomString;
+      return randomString
     }
     const fileRef = storageRef.child(keyGenerator(3)) // rename file here
     await fileRef.put(file)
     //await fileRef.put(file)
     const downloadURL = await fileRef.getDownloadURL()
-    const res = await fetch("/handleUpload", {
-      method: "POST",
+    const res = await fetch('/handleUpload', {
+      method: 'POST',
       headers: {
-        "Access-Control-Allow-Origin": "*",
+        'Access-Control-Allow-Origin': '*'
       },
       body: downloadURL
     })
     const userObj = {}
     userObj[this.state.username] = downloadURL
-    await app.database().ref().update(userObj)
+    await app
+      .database()
+      .ref()
+      .update(userObj)
 
     // if (e.target[0].files.length > 0) {
     //   this.setState({
@@ -77,8 +81,8 @@ class UploadPage extends React.Component {
     //   },
     //   body: data,
     // });
-    var jsonRes = await res.json();
-    this.setState({ loaded: true, result: jsonRes, loading: false });
+    var jsonRes = await res.json()
+    this.setState({loaded: true, result: jsonRes, loading: false})
   }
 
   render() {
@@ -97,12 +101,12 @@ class UploadPage extends React.Component {
                 delay: 20,
                 deleteSpeed: 5,
                 strings: [
-                  "Analyzing your watching history...",
-                  "lol",
-                  "omg",
-                  "okay hold up",
+                  'Analyzing your watching history...',
+                  'lol',
+                  'omg',
+                  'okay hold up'
                 ],
-                autoStart: true,
+                autoStart: true
               }}
             />
           </div>
@@ -110,11 +114,11 @@ class UploadPage extends React.Component {
           <div>
             <div
               style={{
-                height: "100vh",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
+                height: '100vh',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center'
               }}
             >
               <div>
@@ -123,27 +127,27 @@ class UploadPage extends React.Component {
                   Please upload your Netflix viewing history here
                 </p>
                 <Card>
-                  <Card.Body style={{ color: "black" }}>
+                  <Card.Body style={{color: 'black'}}>
                     <Form
                       action="/handleUpload"
                       method="post"
                       encType="multipart/form-data"
                       onSubmit={this.handleSubmit}
-                      style={{ display: "flex", flexDirection: "column" }}
+                      style={{display: 'flex', flexDirection: 'column'}}
                     >
                       <Form.File
                         name="submission"
                         style={{
                           fontSize: 20,
-                          backgroundColor: "lightgray",
-                          borderColor: "red",
+                          backgroundColor: 'lightgray',
+                          borderColor: 'red'
                         }}
                       />
                       <Button
                         type="submit"
                         value="Upload"
                         className="mt-3"
-                        style={{ alignSelf: "flex-end" }}
+                        style={{alignSelf: 'flex-end'}}
                       >
                         Upload
                       </Button>
@@ -173,7 +177,7 @@ class UploadPage extends React.Component {
           </div>
         )}
       </div>
-    );
+    )
   }
 }
-export default UploadPage;
+export default UploadPage
