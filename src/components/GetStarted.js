@@ -1,32 +1,32 @@
-import React, { useState } from "react";
-import { Button, Container, Row, Col } from "react-bootstrap";
-import UploadPage from "./UploadPage";
-import Sample from "./Sample";
+import React, {useState} from 'react'
+import {Button, Container, Row, Col} from 'react-bootstrap'
+import SignUp from './SignUp'
+import Sample from './Sample'
 import Typewriter from "typewriter-effect";
 
 const GetStarted = () => {
-  const [showInstruction, setShowInstruction] = useState(false);
-  const [no, setNo] = useState(false);
-  const [showSample, setShowSample] = useState(false);
-  const [okButtonDisplay, setOkButtonDisplay] = useState("inline");
+  const [showInstruction, setShowInstruction] = useState(false)
+  const [no, setNo] = useState(false)
+  const [showSample, setShowSample] = useState(false)
+  const [okButtonDisplay, setOkButtonDisplay] = useState('inline')
   const [noButtonColor, setNoButtonColor] = useState("outline-light");
 
   const [typingDone1, setTypingDone1] = useState(false);
   const [typingDone2, setTypingDone2] = useState(false);
 
   const handleOkButton = () => {
-    setShowInstruction(true);
-  };
+    setShowInstruction(true)
+  }
 
   const handleNoButton = () => {
-    setNo(true);
-    setOkButtonDisplay("none");
-    setNoButtonColor("dark");
-  };
+    setNo(true)
+    setOkButtonDisplay('none')
+    setNoButtonColor('dark')
+  }
 
   const handleSampleButton = () => {
-    setShowSample(true);
-  };
+    setShowSample(true)
+  }
 
   const handleDoneTyping1 = () => {
     setTypingDone1(true);
@@ -38,7 +38,7 @@ const GetStarted = () => {
   return (
     <div>
       {showInstruction ? (
-        <UploadPage />
+        <SignUp />
       ) : showSample ? (
         <Sample />
       ) : (
@@ -57,7 +57,8 @@ const GetStarted = () => {
                   .start();
               }}
               options={{
-                delay: 35,
+                delay: 20,
+                deleteSpeed: 20
               }}
             />
           </Row>
@@ -85,7 +86,7 @@ const GetStarted = () => {
                 onInit={(typewriter) => {
                   typewriter
                     .typeString(
-                      "Well, I can't judge your taste without seeing your Netflix view history. <br /> If you really don't want to, you can check out our analysis based on sample data."
+                      "I can't judge your taste without seeing your Netflix view history. <br /> If you really don't want to, you can check out our analysis based on sample data."
                     )
                     .pauseFor(1500)
                     .callFunction(() => {
@@ -94,7 +95,8 @@ const GetStarted = () => {
                     .start();
                 }}
                 options={{
-                  delay: 35,
+                  delay: 20,
+                  deleteSpeed: 20
                 }}
               />
               {typingDone2 && (
@@ -120,7 +122,7 @@ const GetStarted = () => {
         </Container>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default GetStarted;
+export default GetStarted
