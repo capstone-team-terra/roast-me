@@ -6,15 +6,10 @@ def popularityCounter(df):
     # df = pd.read_pickle(
     #    './merged_data.pkl')
     df = df.drop_duplicates(subset='primaryTitle', keep='first')
-<<<<<<< HEAD
     top = df[(df['numVotes'] > 30000) & (df['averageRating'] > 5)
              ]['primaryTitle'].iloc[0:5].values.tolist()
     bottom = df[(df['numVotes'] < 500) & (df['averageRating'] <= 5)
                 ]['primaryTitle'].iloc[0:5].values.tolist()
-=======
-    top = df[(df['numVotes'] > 30000) & (df['averageRating'] > 5)]['primaryTitle'].iloc[0:5].values.tolist()
-    bottom = df[(df['numVotes'] < 500) & (df['averageRating'] <= 5)]['primaryTitle'].iloc[0:5].values.tolist()
->>>>>>> bc2ec208892c16b9b4bc8747a29cc97b9ab0b1a3
     popularCount = len(df[(df['numVotes'] > 30000) &
                           (df['averageRating'] > 5)].index)
     unpopularCount = len(df[(df['averageRating'] < 5) &
