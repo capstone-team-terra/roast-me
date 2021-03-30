@@ -23,9 +23,8 @@ def pickleThis(data):
         df_origin_ratings, how="inner", on="root_lower")
 
     # df_merged = df_merged.drop_duplicates(subset='primaryTitle', keep='first')
-df_merged = df_merged[["primaryTitle", "averageRating", "numVotes",
-                       "Title", "show_type", "runtimeMinutes", "genres", "tconst"]]
-
-return df_merged
+    df_merged = df_merged[["primaryTitle", "averageRating", "numVotes",
+                           "Title", "show_type", "runtimeMinutes", "genres", "tconst"]]
+    return df_merged
 #mergedData_file = 'merged_data.pkl'
 #pickle.dump(df_merged, open(mergedData_file, 'wb'))

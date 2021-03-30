@@ -18,7 +18,7 @@ export default function Summary(props) {
   const watchTimeScorePercentage = runtime.score / 25 * 100
 
   //overview data
-  const topshow = popularity.topShow
+  const topshow = popularity.topShow[0]
   const yearJoined = moment(Object.keys(runtime.data)[0]).format('YYYY')
   const totalTime = Math.floor(
     Object.keys(runtime.data).reduce((acc, key) => acc + runtime.data[key], 0) /

@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Container, Col, Row, Badge, Button, Navbar, Nav} from 'react-bootstrap'
+import {Container, Button, Navbar, Nav} from 'react-bootstrap'
 import Typewriter from 'typewriter-effect'
 import UploadPage from './UploadPage'
 import Chatbot from './chatComponent/ChatbotPage'
@@ -134,7 +134,7 @@ const Sample = () => {
                   .start()
               }}
               options={{
-                delay: 50,
+                delay: 20,
                 deleteSpeed: 30
               }}
             />
