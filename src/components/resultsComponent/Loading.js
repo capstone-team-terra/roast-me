@@ -24,26 +24,3 @@ export default function Loading() {
     </div>
   )
 }
-
-
-
-{/* <Typewriter
-          onInit={typewriter => {
-            typewriter
-              .typeString('> Your Netflix was not bad.')
-              .start()
-              .pauseFor(2000)
-              .deleteAll()
-              .typeString(
-                '> Your Netflix was hot-topic-threw-up-on-you-awkward-middle-school-family-friendly-comedy bad.'
-              )
-              .start()
-              .pauseFor(1000)
-              .callFunction(() => {
-                props.handleDoneTyping()
-              })
-          }}
-          options={{
-            delay: 35
-          }}
-        /> */}
