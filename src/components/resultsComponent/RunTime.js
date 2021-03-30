@@ -105,15 +105,16 @@ export default function RunTime(props) {
       </div>
       <div>
         <p style={{fontSize: '20px', fontStyle: 'italic'}}>
-          You watched{' '}
+          You've watched  a total of{' '}
           <span style={{color: 'rgba(234, 87, 102)'}}>{sumHrs}</span> hours
-          worth of Netflix shows since you signed up...{' '}
+          of Netflix{' '}
         </p>
         <p style={{fontSize: '15px', fontStyle: 'italic'}}>
           That is about{' '}
           <span style={{color: 'rgba(234, 87, 102)'}}>{sumDays}</span> days (or{' '}
           {sumMonth} months) you wasted.. Just saying.
         </p>
+        <p style={{fontSize: '10px', fontStyle: 'italic', color: 'rgba(82, 179, 217, 1)'}}>+{result.score} Basic Points</p>
       </div>
     </Card>
   )

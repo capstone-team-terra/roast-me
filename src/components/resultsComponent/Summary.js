@@ -125,10 +125,22 @@ export default function Summary(props) {
               }}
             </VisibilitySensor>
           </div>
-          <p className="mt-5">
-            Based on your viewing history, you are {totalScore}% basic!
-          </p>
         </Col>
+        <Col>
+        <p className="mt-5">
+             Based on the following data, you got {totalScore}/100 Basic Points!
+          </p>
+          <p className="mt-5"> <strong>
+          Here's how your score breaks down:
+          </strong>
+          </p>
+          <p className="mt-5">
+          Watchtime Score:{'   '}<span style={{color: 'rgba(82, 179, 217, 1)'}}>{runtime.score}</span>/25<br/>
+          Top Shows Score:{'   '} <span style={{color: 'rgba(82, 179, 217, 1)'}}>25</span>/25<br/>
+          Top Genres Score:{'   '}<span style={{color: 'rgba(82, 179, 217, 1)'}}>25</span>/25<br/>
+          Mainstream Score:{'   '}<span style={{color: 'rgba(82, 179, 217, 1)'}}>{popularity.score}</span>25
+          </p>
+          </Col>
       </Row>
     </Container>
   )

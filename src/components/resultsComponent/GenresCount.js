@@ -75,6 +75,7 @@ export default function GenresCount(props) {
               </span>
               {sorted[0][0]} shows... Such great taste!
             </p>
+            <p style={{fontSize: '10px', fontStyle: 'italic', color: 'rgba(82, 179, 217, 1)'}}>+25 Basic Points</p>
           </div>
         </Card>
       ) : (

@@ -105,6 +105,7 @@ export default function ShowsCount(props) {
         <span style={{ color: "rgba(234, 87, 102)" }}> {top1Count}</span> times
         ! Wow.
       </p>
+      <p style={{fontSize: '10px', fontStyle: 'italic', color: 'rgba(82, 179, 217, 1)'}}>+25 Basic Points</p>
     </Card>
   );
 }

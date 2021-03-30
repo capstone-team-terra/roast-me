@@ -68,7 +68,7 @@ export default function ShowsCount(props) {
       <p style={{fontSize: '15px', fontStyle: 'italic'}}>
         Your hidden gems were: <strong>{bottomShow.join(' - ')}</strong>.
       </p>
-      <p style={{fontSize: '10px', fontStyle: 'italic'}}>Do better.</p>
+      <p style={{fontSize: '10px', fontStyle: 'italic', color: 'rgba(82, 179, 217, 1)'}}>+{score} Basic Points</p>
     </Card>
   )
 }
