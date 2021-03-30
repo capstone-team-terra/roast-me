@@ -81,6 +81,7 @@ class UploadPage extends React.Component {
     //   },
     //   body: data,
     // });
+    console.log('RES ---->', res)
     var jsonRes = await res.json()
     this.setState({loaded: true, result: jsonRes, loading: false})
   }
