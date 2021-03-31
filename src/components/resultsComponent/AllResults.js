@@ -5,7 +5,7 @@ import GenresCount from './GenresCount'
 import PopularityCount from './PopularityCount'
 import RunTime from './RunTime'
 import Typewriter from 'typewriter-effect'
-import {Col, Row, Button, Container} from 'react-bootstrap'
+import {Col, Row, Button, Container, Navbar} from 'react-bootstrap'
 import Summary from './Summary'
 import aos from 'aos'
 import 'aos/dist/aos.css'
@@ -28,6 +28,8 @@ export class AllResults extends React.Component {
     this.setState({result: this.props.result, loaded: true})
   }
   handleDoneTyping() {
+    let audio = new Audio('https://firebasestorage.googleapis.com/v0/b/roastflix-a53f3.appspot.com/o/Netflix-Intro.wav?alt=media&token=6281d635-b6ab-4bbb-a39f-d8fd3efc2fef');
+    audio.play();
     this.setState({typed: true})
   }
   handleShowResult() {
@@ -40,6 +42,20 @@ export class AllResults extends React.Component {
         'No results available at this moment!'
       ) : (
         <Container className="text-center" fluid="md">
+          <Navbar
+            style={{
+              position: 'absolute',
+              top: 30,
+              left: 10,
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'space-around'
+            }}
+          >
+            <Navbar.Brand>
+              <h1 className="netflix-red">Your Netflix Statistics</h1>
+            </Navbar.Brand>
+          </Navbar>
           <Summary {...this.state.result} />
           <Button
             className="mt-5 mb-5"
@@ -75,6 +91,15 @@ export class AllResults extends React.Component {
                   <PopularityCount result={this.state.result.popularity} />
                 </Col>
               </Row>
+                <small>
+                  Want to learn more about the RoastFLIX algorithm?{" "}
+              <a
+                href="https://soundcloud.com/user-21005105-429685994/netflix-ba-boom"
+                target="_blank" rel="noopener noreferrer"
+              >
+                Click Here
+                </a>
+                </small>
             </Container>
           ) : (
             ''
@@ -83,7 +108,7 @@ export class AllResults extends React.Component {
       )
     ) : (
       <div>
-        {/* <Button onClick={() => this.handleDoneTyping(true)}>Testing</Button> */}
+        {/* <Button onClick={() => this.handleDoneTyping()}>Testing</Button> */}
         <Typewriter
           onInit={typewriter => {
             typewriter
