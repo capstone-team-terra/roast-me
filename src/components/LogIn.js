@@ -5,9 +5,11 @@ import {app} from '../base'
 import Loading from './resultsComponent/Loading'
 
 class LogIn extends React.Component {
+
   constructor() {
     super()
     this.state = {
+      value: '',
       loggedIn: false,
       attempt: false,
       loading: false,
@@ -16,9 +18,17 @@ class LogIn extends React.Component {
     }
     this.handleLogIn = this.handleLogIn.bind(this)
   }
+
+  componentDidMount() {
+    console.log(window.location.pathname)
+    let user = window.location.pathname.split("/")[2];
+    this.setState({ value: user });
+  }
+
   handleLogIn(e) {
     e.preventDefault()
-    const username = e.target.form[0].value
+    console.log('STATE ---->', this.state)
+    const username = this.state.value
     this.setState({loading: true,})
     app
       .database()
@@ -54,7 +64,7 @@ class LogIn extends React.Component {
               <label>Enter your Username to access your results:</label>
               <Col>
                 <Row>
-                  <input type="userName" placeholder="Your Username Here" />
+                  <input type="userName" placeholder="Your Username Here" value={this.state.value} onChange={(e) => {this.setState({value: e.target.value })}}/>
                 </Row>
                 <Row>
                   <Button

@@ -63,25 +63,6 @@ class UploadPage extends React.Component {
       .ref()
       .update(userObj)
 
-    // if (e.target[0].files.length > 0) {
-    //   this.setState({
-    //     loading: true,
-    //     loaded: false,
-    //     result: {},
-    //     fileChosen: true,
-    //   });
-    // } else {
-    //   console.log("no file chosen");
-    // }
-    // const data = new FormData();
-    // data.append("submission", e.target[0].files[0]);
-    // const res = await fetch("http://127.0.0.1:3145/handleUpload", {
-    //   method: "POST",
-    //   headers: {
-    //     "Access-Control-Allow-Origin": "*",
-    //   },
-    //   body: data,
-    // });
     console.log('RES ---->', res)
     var jsonRes = await res.json()
     this.setState({loaded: true, result: jsonRes, loading: false})
