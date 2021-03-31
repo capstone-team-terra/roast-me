@@ -20,12 +20,13 @@ class ChatbotPage extends React.Component {
     super(props)
     this.state = {
       result: {},
-      clicked: false
+      clicked: false,
+      username: ''
     }
     this.handleClick = this.handleClick.bind(this)
   }
   componentDidMount() {
-    this.setState({result: this.props.result})
+    this.setState({result: this.props.result, username: this.props.username})
   }
   handleClick() {
     this.setState({clicked: true})
@@ -193,7 +194,7 @@ class ChatbotPage extends React.Component {
       }
     ]
     return this.state.clicked ? (
-      <AllResults result={this.state.result} />
+      <AllResults result={this.state.result} username={this.state.username}/>
     ) : (
       <div>
         <ThemeProvider theme={theme}>
