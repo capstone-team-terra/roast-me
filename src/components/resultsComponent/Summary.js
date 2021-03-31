@@ -134,22 +134,22 @@ export default function Summary(props) {
           Here's how your score breaks down:
           </strong>
           </p>
-          <Row className="text-center">
+          <Row className="justify-content-center">
 
-          <Col xs sm md={6}>
-              <Row>Watchtime:</Row>
-              <Row>Top Shows:</Row>
-              <Row>Top Genres:</Row>
-              <Row>Popularity:</Row>
-              <Row className="font-weight-bold">Composite Score:</Row>
-          </Col>
-          <Col style={{color: 'rgba(82, 179, 217, 1)'}} xs sm md={6}>
-              <Row>{runtime.score}/25</Row>
-              <Row>25/25</Row>
-              <Row>{genres.score}/25</Row>
-              <Row>{popularity.score}/25</Row>
-              <Row className="font-weight-bold">{totalScore}/100</Row>
-          </Col>
+            <Col xs sm md={6}>
+                <Row className="justify-content-center">Watchtime:</Row>
+                <Row className="justify-content-center">Top Shows:</Row>
+                <Row className="justify-content-center">Top Genres:</Row>
+                <Row className="justify-content-center">Popularity:</Row>
+                <Row className="font-weight-bold justify-content-center">Composite Score:</Row>
+            </Col>
+            <Col style={{color: 'rgba(82, 179, 217, 1)'}} xs sm md={6}>
+                  <Row className="justify-content-center">{runtime.score}/25</Row>
+                  <Row className="justify-content-center">25/25</Row>
+                  <Row className="justify-content-center">{genres.score}/25</Row>
+                  <Row className="justify-content-center">{popularity.score}/25</Row>
+                  <Row className="font-weight-bold justify-content-center">{totalScore}/100</Row>
+              </Col>
           </Row>
 
           {/* <p className="mt-5">
