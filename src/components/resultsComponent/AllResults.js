@@ -17,15 +17,18 @@ export class AllResults extends React.Component {
       result: {},
       loaded: false,
       typed: false,
-      showResult: false
+      showResult: false,
+      username: '',
+      copied: false
     }
     this.handleDoneTyping = this.handleDoneTyping.bind(this)
     this.handleShowResult = this.handleShowResult.bind(this)
+    this.copyToClipboard = this.copyToClipboard.bind(this)
   }
 
   componentDidMount() {
     aos.init({duration: 1000})
-    this.setState({result: this.props.result, loaded: true})
+    this.setState({result: this.props.result, loaded: true, username: this.props.username ? this.props.username : ''})
   }
   handleDoneTyping() {
     let audio = new Audio('https://firebasestorage.googleapis.com/v0/b/roastflix-a53f3.appspot.com/o/Netflix-Intro.wav?alt=media&token=6281d635-b6ab-4bbb-a39f-d8fd3efc2fef');
@@ -34,6 +37,15 @@ export class AllResults extends React.Component {
   }
   handleShowResult() {
     this.setState({showResult: true})
+  }
+  copyToClipboard() {
+    let dummy = document.createElement("input");
+    document.body.appendChild(dummy);
+    dummy.setAttribute('value', `https://roastflix-309106.uk.r.appspot.com/results/` + this.state.username);
+    dummy.select();
+    document.execCommand("copy");
+    document.body.removeChild(dummy);
+    this.setState({copied: true})
   }
 
   render() {
@@ -100,7 +112,12 @@ export class AllResults extends React.Component {
                 Click Here
                 </a>
                 </small>
-            </Container>
+              {this.state.username.length > 0 ? (<div> <p> Interested in sharing your results with a friend?</p>
+              <Button className="mt-5 mb-5"
+            variant="outline-light" onClick={this.copyToClipboard}>Copy link!</Button>
+              {this.state.copied ? <div> Copied to clipboard! </div> : <div> </div>} </div>) : <div> </div> }
+              
+      </Container>
           ) : (
             ''
           )}

@@ -14,28 +14,52 @@ class LogIn extends React.Component {
       attempt: false,
       loading: false,
       loaded: false,
+
       result: {}
     }
     this.handleLogIn = this.handleLogIn.bind(this)
   }
 
   componentDidMount() {
-    console.log(window.location.pathname)
-    let user = window.location.pathname.split("/")[2];
-    this.setState({ value: user });
+    let path = window.location.pathname.split("/");
+    if (path.length > 2) {
+      let username = path.slice(2).join('');
+      this.setState({ value: username });
+      app
+      .database()
+      .ref()
+      .child(username)
+      .once('value', async snap => {
+        if (snap.exists()) {
+          this.setState({loading: true})
+          const downloadURL = snap.val()
+          const res = await fetch('/handleUpload', {
+            method: 'POST',
+            headers: {
+              'Access-Control-Allow-Origin': '*'
+            },
+            body: downloadURL
+          })
+          const jsonRes = await res.json()
+          this.setState({loggedIn: true, result: jsonRes, loading: false, loaded: true})
+        } else {
+          this.setState({attempt: true})
+        }
+      })
+    }
   }
 
   handleLogIn(e) {
     e.preventDefault()
     console.log('STATE ---->', this.state)
     const username = this.state.value
-    this.setState({loading: true,})
     app
       .database()
       .ref()
       .child(username)
       .once('value', async snap => {
         if (snap.exists()) {
+          this.setState({loading: true,})
           const downloadURL = snap.val()
           const res = await fetch('/handleUpload', {
             method: 'POST',
@@ -56,7 +80,7 @@ class LogIn extends React.Component {
     return (
       <Container>
         {this.state.loaded && this.state.loggedIn ? (
-          <AllResults result={this.state.result} />
+          <AllResults result={this.state.result} username={this.state.value}/>
         ) : this.state.loading ? (
           <Loading />) : (
             <form>
