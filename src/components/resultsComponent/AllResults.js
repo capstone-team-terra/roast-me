@@ -30,49 +30,56 @@ export class AllResults extends React.Component {
   handleDoneTyping() {
     this.setState({typed: true})
   }
-  handleShowResult(){
+  handleShowResult() {
     this.setState({showResult: true})
   }
 
   render() {
-    console.log('showresult', this.state.showResult)
     return this.state.typed ? (
       !this.state.loaded ? (
         'No results available at this moment!'
       ) : (
-        <Container className="text-center">
-        <Summary {...this.state.result} />
-          <Button className= 'mt-5 mb-5' variant ='outline-light' onClick={() => this.handleShowResult()}>See your statistics</Button>
+        <Container className="text-center" fluid="md">
+          <Summary {...this.state.result} />
+          <Button
+            className="mt-5 mb-5"
+            variant="outline-light"
+            onClick={() => this.handleShowResult()}
+          >
+            See your statistics
+          </Button>
           {this.state.showResult ? (
-            <Container className="text-center">
-            <Row className="justify-content-center">
-            <Col md={12} data-aos="zoom-out">
-              <ShowsCount result={this.state.result.views} />
-            </Col>
-          </Row>
-          <Row className="justify-content-center">
-            <Col md={12} data-aos="zoom-out">
-              <ViewCount result={this.state.result.viewcount} />
-            </Col>
-          </Row>
-          <Row className="justify-content-center">
-            <Col md={12} data-aos="zoom-out">
-              <RunTime result={this.state.result.runtime} />
-            </Col>
-          </Row>
-          <Row className="justify-content-center">
-            <Col md={12} data-aos="zoom-out">
-              <GenresCount result={this.state.result.genres} />
-            </Col>
-          </Row>
-          <Row className="justify-content-center">
-            <Col md={12} data-aos="zoom-out">
-              <PopularityCount result={this.state.result.popularity} />
-            </Col>
-          </Row>
-          </Container>
-          ) : '' }
-          </Container>
+            <Container className="text-center" fluid="md">
+              <Row className="justify-content-center">
+                <Col data-aos="zoom-out">
+                  <ShowsCount result={this.state.result.views} />
+                </Col>
+              </Row>
+              <Row className="justify-content-center">
+                <Col data-aos="zoom-out">
+                  <ViewCount result={this.state.result.viewcount} />
+                </Col>
+              </Row>
+              <Row className="justify-content-center">
+                <Col data-aos="zoom-out">
+                  <RunTime result={this.state.result.runtime} />
+                </Col>
+              </Row>
+              <Row className="justify-content-center">
+                <Col data-aos="zoom-out">
+                  <GenresCount result={this.state.result.genres} />
+                </Col>
+              </Row>
+              <Row className="justify-content-center">
+                <Col data-aos="zoom-out">
+                  <PopularityCount result={this.state.result.popularity} />
+                </Col>
+              </Row>
+            </Container>
+          ) : (
+            ''
+          )}
+        </Container>
       )
     ) : (
       <div>

@@ -11,9 +11,10 @@ from charts.RunTime import runTime
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def index():
-    #return 'Hello World!'
+    # return 'Hello World!'
     url = url_for('static', filename='bundle.js')
     return render_template('index.html', bundle=url)
 
@@ -22,19 +23,19 @@ def resultsForUser(user):
     #return 'Hello World!'
     url = url_for('static', filename='bundle.js')
     return render_template('index.html', bundle=url)
-    
+
 
 @app.route("/handleUpload", methods=['POST'])
 def handleFileUpload():
     print('REQUEST ----> ', request.data)
-    data = request.data.decode("utf-8") 
+    data = request.data.decode("utf-8")
     df = pickleThis(data)
     mostViewed = viewsCounter(data)
     #print('mostViewed ---> ', mostViewed)
     topGenres = genresCounter(df)
     #print('topGenres ---> ', topGenres)
     mostPopular = popularityCounter(df)
-    print('mostPopular ---> ', mostPopular)
+    # print('mostPopular ---> ', mostPopular)
     watchFreq = watchFrequency(data)
     #print('watchFreq ---> ', watchFreq)
     watchTime = runTime(df)
@@ -45,6 +46,7 @@ def handleFileUpload():
             'viewcount': watchFreq,
             'runtime': watchTime
             }
+
 
 @app.errorhandler(500)
 def server_error(e):
