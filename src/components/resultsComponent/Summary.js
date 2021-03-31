@@ -128,24 +128,30 @@ export default function Summary(props) {
         </Col>
         <Col xs sm md={6}>
           <p className="mt-10">
-             Based on the following data, you got {totalScore}/100 Basic Points!
+             Based on the following data, you are {totalScore}% basic!
           </p>
           <p className="mt-5"> <strong>
           Here's how your score breaks down:
           </strong>
           </p>
+          <Row className="text-center">
+
           <Col xs sm md={6}>
               <Row>Watchtime:</Row>
               <Row>Top Shows:</Row>
               <Row>Top Genres:</Row>
               <Row>Popularity:</Row>
+              <Row className="font-weight-bold">Composite Score:</Row>
           </Col>
           <Col style={{color: 'rgba(82, 179, 217, 1)'}} xs sm md={6}>
               <Row>{runtime.score}/25</Row>
               <Row>25/25</Row>
               <Row>{genres.score}/25</Row>
               <Row>{popularity.score}/25</Row>
+              <Row className="font-weight-bold">{totalScore}/100</Row>
           </Col>
+          </Row>
+
           {/* <p className="mt-5">
           Watchtime Score:{'   '}<span style={{color: 'rgba(82, 179, 217, 1)'}}>{runtime.score}</span>/25<br/>
           Top Shows Score:{'   '} <span style={{color: 'rgba(82, 179, 217, 1)'}}>25</span>/25<br/>
