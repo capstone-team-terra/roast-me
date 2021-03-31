@@ -27,7 +27,7 @@ export default function Summary(props) {
   const favGenre = Object.entries(genres).sort((a, b) => b[1] - a[1])[0][0]
 
   return (
-    <Container className="text-center">
+    <Container className="text-center" style={{marginTop: 150}}>
       <Row>
         <Col>
           <h1 className="mb-5">At a Glance</h1>
@@ -93,7 +93,7 @@ export default function Summary(props) {
             <CircularProgressbar
               value={100}
               text={`${favGenre}`}
-              strokeWidth={2}
+              strokeWidth={3}
               styles={buildStyles({
                 pathTransitionDuration: 1.5,
                 pathColor: '#db0000',
@@ -117,11 +117,9 @@ export default function Summary(props) {
                   <CircularProgressbar
                     value={percentage}
                     text={`${percentage}%`}
-                    strokeWidth={4}
+                    strokeWidth={6}
                     styles={buildStyles({
                       pathTransitionDuration: 1.5,
-                      pathColor: '#db0000',
-                      textColor: 'white',
                     })}
                   />
                 )
