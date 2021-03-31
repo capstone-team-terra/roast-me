@@ -3,6 +3,7 @@ import ShowsCount from './ShowsCount'
 import ViewCount from './ViewCount'
 import GenresCount from './GenresCount'
 import PopularityCount from './PopularityCount'
+import RegionsCount from './RegionsCount'
 import RunTime from './RunTime'
 import Typewriter from 'typewriter-effect'
 import {Col, Row, Button, Container} from 'react-bootstrap'
@@ -73,6 +74,11 @@ export class AllResults extends React.Component {
               <Row className="justify-content-center">
                 <Col data-aos="zoom-out">
                   <PopularityCount result={this.state.result.popularity} />
+                </Col>
+              </Row>
+              <Row className="justify-content-center">
+                <Col data-aos="zoom-out">
+                  <RegionsCount result={this.state.result.regions} />
                 </Col>
               </Row>
             </Container>

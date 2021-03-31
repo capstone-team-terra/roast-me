@@ -69,6 +69,16 @@ const results = {
       'The End of the Fucking World',
       'Repair Shop'
     ]
+  },
+  regions: {
+    regions: {
+      'United States': 50,
+      'Japan': 30,
+      'Canada': 25,
+      'Mexico': 10,
+      'Spain': 5
+    },
+    score: 15
   }
 }
 

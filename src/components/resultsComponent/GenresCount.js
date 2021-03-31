@@ -20,11 +20,11 @@ export default function GenresCount(props) {
       {
         label: 'Watches',
         backgroundColor: [
-          'rgba(234, 87, 102)',
-          'rgb(155, 67, 8)',
-          'rgb(223, 54, 12)',
-          '#666699',
-          '#CC9933'
+          '#db0000',
+          '#333333',
+          '#d3d3d3',
+          '#f5f3f4',
+          '#52b3d9'
         ],
         data: numArr,
         hoverOffset: 30

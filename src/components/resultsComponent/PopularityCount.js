@@ -13,7 +13,7 @@ export default function ShowsCount(props) {
     datasets: [
       {
         data: percents,
-        backgroundColor: ['#E50914', '#5CDB95', '#000000']
+        backgroundColor: ['#db0000', '#333333', '#d3d3d3']
       }
     ],
 

@@ -30,8 +30,8 @@ export default function RunTime(props) {
     datasets: [
       {
         data: yValues,
-        backgroundColor: 'rgba(244, 162, 97, 0.6)',
-        borderColor: 'rgba(244, 162, 97, 0.6)',
+        backgroundColor: '#db0000',
+        borderColor: 'white',
         pointHoverRadius: 20,
         pointHoverBorderWidth: 5
       }

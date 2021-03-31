@@ -28,7 +28,8 @@ export default function ShowsCount(props) {
     datasets: [
       {
         data: xValues,
-        backgroundColor: 'rgba(234, 87, 102, 0.6)'
+        backgroundColor: '#db0000',
+        borderColor: 'white',
       }
     ]
   }
