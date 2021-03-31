@@ -67,21 +67,17 @@ class WelcomePage extends React.Component {
                   delay: 35
                 }}
               />
+              </Row>
               {this.state.typingDone && (
-                <Row>
-                  <Col>
-                    <Button variant="outline-light" onClick={this.handleLogIn}>
-                      Yes
-                    </Button>
-                  </Col>
-                  <Col>
-                    <Button variant="outline-light" onClick={this.handleSignUp}>
-                      No
-                    </Button>
-                  </Col>
-                </Row>
+              <Row className="mt-3 justify-content-center">
+                  <Button variant="outline-light" className="mr-3" onClick={this.handleLogIn}>
+                    Yes
+                  </Button>
+                  <Button variant="outline-light" className="ml-3" onClick={this.handleSignUp}>
+                    No
+                  </Button>
+              </Row>
               )}
-            </Row>
           </Container>
         )}
       </div>
