@@ -28,7 +28,7 @@ export class AllResults extends React.Component {
 
   componentDidMount() {
     aos.init({duration: 1000})
-    this.setState({result: this.props.result, loaded: true, username: this.props.username})
+    this.setState({result: this.props.result, loaded: true, username: this.props.username ? this.props.username : ''})
   }
   handleDoneTyping() {
     this.setState({typed: true})
@@ -87,10 +87,11 @@ export class AllResults extends React.Component {
                   <PopularityCount result={this.state.result.popularity} />
                 </Col>
               </Row>
-              <p> Interested in sharing your results with a friend?</p>
+              {this.state.username.length > 0 ? (<div> <p> Interested in sharing your results with a friend?</p>
               <Button className="mt-5 mb-5"
             variant="outline-light" onClick={this.copyToClipboard}>Copy link!</Button>
-              {this.state.copied ? <div> Copied to clipboard! </div> : <div> </div>}
+              {this.state.copied ? <div> Copied to clipboard! </div> : <div> </div>} </div>) : <div> </div> }
+              
             </Container>
           ) : (
             ''
