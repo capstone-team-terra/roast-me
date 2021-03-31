@@ -2,6 +2,7 @@ import React from 'react'
 import {Bar} from 'react-chartjs-2'
 import moment from 'moment'
 import {Card} from 'react-bootstrap'
+import ChartCard from './Styling/ChartTheme'
 
 export default function RunTime(props) {
   const {result} = props
@@ -81,40 +82,27 @@ export default function RunTime(props) {
     }
   }
   return (
-    <Card
-      style={{
-        background: "rgb(10,10,10)",
-        boxShadow: "0px 0px 10px 5px rgba(100, 100, 100, .6)",
-        maxWidth: "90vw",
-        height: "690px",
-        paddingTop: "1.5em",
-        paddingRight: "1.5em",
-        paddingLeft: "1.5em",
-        paddingBottom: "1em",
-        margin: "1em",
-        color: "rgb(224, 228, 228)",
-        display: "flex",
-        justifyContent: "space-between",
-      }}
-    >
-      <Card.Title style={{textAlign: 'center', fontSize: 30}}>
-        Total hours you spent on Netflix
-      </Card.Title>
-      <div>
-        <Bar data={resultData} options={options} width={600} height={400} />
-      </div>
-      <div>
-        <p style={{fontSize: '20px', fontStyle: 'italic'}}>
-          You watched{' '}
-          <span style={{color: 'rgba(234, 87, 102)'}}>{sumHrs}</span> hours
-          worth of Netflix shows since you signed up...{' '}
-        </p>
-        <p style={{fontSize: '15px', fontStyle: 'italic'}}>
-          That is about{' '}
-          <span style={{color: 'rgba(234, 87, 102)'}}>{sumDays}</span> days (or{' '}
-          {sumMonth} months) you wasted.. Just saying.
-        </p>
-      </div>
-    </Card>
+    <ChartCard>
+      <Card>
+        <Card.Title style={{textAlign: 'center', fontSize: 30}}>
+          Total hours you spent on Netflix
+        </Card.Title>
+        <div>
+          <Bar data={resultData} options={options} width={600} height={400} />
+        </div>
+        <div>
+          <p style={{fontSize: '20px', fontStyle: 'italic'}}>
+            You watched{' '}
+            <span style={{color: 'rgba(234, 87, 102)'}}>{sumHrs}</span> hours
+            worth of Netflix shows since you signed up...{' '}
+          </p>
+          <p style={{fontSize: '15px', fontStyle: 'italic'}}>
+            That is about{' '}
+            <span style={{color: 'rgba(234, 87, 102)'}}>{sumDays}</span> days
+            (or {sumMonth} months) you wasted.. Just saying.
+          </p>
+        </div>
+      </Card>
+    </ChartCard>
   )
 }
