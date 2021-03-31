@@ -26,3 +26,22 @@ code {
 .netflix-red {
   color: #db0000;
 }
+
+#triangle {
+  display: block;
+  width: 80px;
+  height: 80px;
+  border-style: solid;
+  border-width: 0 90px 90px 0;
+  border-color: transparent #db0000 transparent transparent;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+#triangle-content {
+  position: relative;
+  top: -3px;
+  right: -45px;
+  transform: rotate(45deg);
+}
