@@ -12,7 +12,7 @@ class UploadPage extends React.Component {
     this.state = {
       result: {},
       loaded: false,
-      Loading: false,
+      loading: false,
       fileChosen: false,
       username: props.username
     }
@@ -72,7 +72,7 @@ class UploadPage extends React.Component {
     return (
       <div>
         {this.state.loaded ? (
-          <ChatbotPage result={this.state.result} />
+          <ChatbotPage result={this.state.result} username={this.state.username}/>
         ) : this.state.loading ? (
           <div>
             <Loading />
