@@ -17,6 +17,13 @@ def index():
     url = url_for('static', filename='bundle.js')
     return render_template('index.html', bundle=url)
 
+@app.route('/results/<user>')
+def resultsForUser(user):
+    #return 'Hello World!'
+    url = url_for('static', filename='bundle.js')
+    return render_template('index.html', bundle=url)
+    
+
 @app.route("/handleUpload", methods=['POST'])
 def handleFileUpload():
     print('REQUEST ----> ', request.data)
