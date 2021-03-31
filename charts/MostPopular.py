@@ -17,5 +17,5 @@ def popularityCounter(df):
     popPercent = (popularCount / len(df.index)) * 100.0
     unpopPercent = (unpopularCount / len(df.index)) * 100.0
     medPercent = (mediocre / len(df.index)) * 100.0
-    popularityScore = popPercent * 0.25
-    return {'percents': [popPercent, unpopPercent, medPercent], 'score': popularityScore, 'topShow': top, 'bottomShow': bottom}
+    popularityScore = int(popPercent * 0.25)
+    return {'percents': [(popPercent), (unpopPercent), (medPercent)], 'score': popularityScore, 'topShow': top, 'bottomShow': bottom}

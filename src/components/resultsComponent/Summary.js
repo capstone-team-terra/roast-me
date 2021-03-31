@@ -24,7 +24,7 @@ export default function Summary(props) {
     Object.keys(runtime.data).reduce((acc, key) => acc + runtime.data[key], 0) /
       60
   )
-  const favGenre = Object.entries(genres).sort((a, b) => b[1] - a[1])[0][0]
+  const favGenre = Object.entries(genres.data).sort((a, b) => b[1] - a[1])[0][0]
 
   return (
     <Container className="text-center">
@@ -126,21 +126,33 @@ export default function Summary(props) {
             </VisibilitySensor>
           </div>
         </Col>
-        <Col>
-        <p className="mt-5">
+        <Col xs sm md={6}>
+          <p className="mt-10">
              Based on the following data, you got {totalScore}/100 Basic Points!
           </p>
           <p className="mt-5"> <strong>
           Here's how your score breaks down:
           </strong>
           </p>
-          <p className="mt-5">
+          <Col xs sm md={6}>
+              <Row>Watchtime:</Row>
+              <Row>Top Shows:</Row>
+              <Row>Top Genres:</Row>
+              <Row>Popularity:</Row>
+          </Col>
+          <Col style={{color: 'rgba(82, 179, 217, 1)'}} xs sm md={6}>
+              <Row>{runtime.score}/25</Row>
+              <Row>25/25</Row>
+              <Row>{genres.score}/25</Row>
+              <Row>{popularity.score}/25</Row>
+          </Col>
+          {/* <p className="mt-5">
           Watchtime Score:{'   '}<span style={{color: 'rgba(82, 179, 217, 1)'}}>{runtime.score}</span>/25<br/>
           Top Shows Score:{'   '} <span style={{color: 'rgba(82, 179, 217, 1)'}}>25</span>/25<br/>
-          Top Genres Score:{'   '}<span style={{color: 'rgba(82, 179, 217, 1)'}}>25</span>/25<br/>
+          Top Genres Score:{'   '}<span style={{color: 'rgba(82, 179, 217, 1)'}}>{genres.score}</span>/25<br/>
           Mainstream Score:{'   '}<span style={{color: 'rgba(82, 179, 217, 1)'}}>{popularity.score}</span>25
-          </p>
-          </Col>
+          </p> */}
+        </Col>
       </Row>
     </Container>
   )

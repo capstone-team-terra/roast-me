@@ -2,8 +2,8 @@ import React from "react";
 import { Pie } from "react-chartjs-2";
 import { Card } from "react-bootstrap";
 export default function GenresCount(props) {
-  const { result } = props;
-  const resultsArr = Object.entries(result);
+  const { data, score } = props.result;
+  const resultsArr = Object.entries(data);
 
   //sort the data to large to small
   const allSorted = resultsArr.sort((a, b) => b[1] - a[1]);
@@ -75,7 +75,7 @@ export default function GenresCount(props) {
               </span>
               {sorted[0][0]} shows... Such great taste!
             </p>
-            <p style={{fontSize: '10px', fontStyle: 'italic', color: 'rgba(82, 179, 217, 1)'}}>+25 Basic Points</p>
+            <p style={{fontSize: '10px', fontStyle: 'italic', color: 'rgba(82, 179, 217, 1)'}}>+{score} Basic Points</p>
           </div>
         </Card>
       ) : (
