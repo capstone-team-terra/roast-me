@@ -121,6 +121,9 @@ export class AllResults extends React.Component {
                   <PopularityCount result={this.state.result.popularity} />
                 </Col>
               </Row>
+              <div>
+                  <p><strong> Fun Fact: </strong> The most obscure film of all time is something you have never heard of.</p>
+              </div> 
               {this.state.username.length > 0 ? (<div> <p> Interested in sharing your results with a friend?</p>
               <Button className="mt-5 mb-5"
             variant="outline-light" onClick={this.copyToClipboard}>Copy link!</Button>
