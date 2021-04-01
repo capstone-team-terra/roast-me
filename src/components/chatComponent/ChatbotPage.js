@@ -179,7 +179,7 @@ class ChatbotPage extends React.Component {
       {
         id: '18',
         component: (
-          <div style={{color: 'black'}}>
+          <div>
             <Button
               type="button"
               className="btn btn-danger btn-lg btn-block"
@@ -201,7 +201,7 @@ class ChatbotPage extends React.Component {
           <ChatBot
             steps={steps}
             width="80vw"
-            height="80vh"
+            height="70vh"
             placeholder=" "
             hideBotAvatar="true"
             hideHeader="true"
@@ -209,8 +209,11 @@ class ChatbotPage extends React.Component {
             hideInput="true"
             delay="20"
             userDelay="2000"
-            bubbleStyle={{fontSize: '18px'}}
-            bubbleOptionStyle={({fontSize: '20px'}, {background: '#ffffff50'})}
+            bubbleStyle={{fontSize: '1.3rem'}}
+            bubbleOptionStyle={({fontSize: '1.3rem'}, {background: '#ffffff50'})}
+            customStyle={{background: 'black'}}
+            hideSubmitButton="true"
+            inputStyle={{background: 'black'}}
           />
         </ThemeProvider>
       </div>

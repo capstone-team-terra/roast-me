@@ -129,7 +129,7 @@ const Sample = () => {
             <Typewriter
               onInit={typewriter => {
                 typewriter
-                  .typeString('Analyzing your (sample) watching history...')
+                  .typeString('Analyzing your (sample) viewing history...')
                   .pauseFor(2000)
                   .deleteAll()
                   .typeString('lol')
