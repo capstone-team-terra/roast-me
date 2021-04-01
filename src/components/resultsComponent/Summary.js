@@ -16,8 +16,6 @@ export default function Summary(props) {
   const totalScore = Math.floor(
     genres.score + regions.score + popularity.score + runtime.score
   )
-  const popularityScorePercentage = popularity.score / 25 * 100
-  const watchTimeScorePercentage = runtime.score / 25 * 100
 
   //overview data
   const topshow = popularity.topShow[0]

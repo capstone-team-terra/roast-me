@@ -11,6 +11,7 @@ import Summary from './Summary'
 import aos from 'aos'
 import 'aos/dist/aos.css'
 import {app} from '../../base'
+import Leaderboard from "./Leaderboard"
 
 
 export class AllResults extends React.Component {
@@ -23,7 +24,8 @@ export class AllResults extends React.Component {
       showResult: false,
       username: '',
       copied: false,
-      leaderboard: []
+      leaderboard: [],
+      showLeaderboard: false,
     }
     this.handleDoneTyping = this.handleDoneTyping.bind(this)
     this.handleShowResult = this.handleShowResult.bind(this)
@@ -48,31 +50,34 @@ export class AllResults extends React.Component {
     audio.play()
     this.setState({typed: true})
   }
+
   handleShowResult() {
     this.setState({showResult: true})
   }
-  loadLeaderboard() {
+
+  async loadLeaderboard() {
     const {genres, regions, popularity, runtime} = this.state.result
     const totalScore = Math.floor(
       genres.score + regions.score + popularity.score + runtime.score
     )
     const scoresRef = app.database().ref('scores')
-    console.log('User logged in: ', this.state.username)
-    app
+    await app
     .database()
     .ref().child(this.state.username).update({score: totalScore})
-    const leaderboard = []
-    app.database().ref().orderByChild('score').on('value', snapshot => {
+    let leaderboard = []
+
+    await app.database().ref().orderByChild('score').on('value', snapshot => {
+      console.log('snapshot val', snapshot.val())
+      // leaderboard = await snapshot.val()
       snapshot.forEach(user => {
-        console.log('user', user)
+        console.log('userinfo', user.key, user.val().score)
         leaderboard.push({[`${user.key}`]: user.val().score})
       })
-      // console.log('snapshot', snapshot.val())
-      // leaderboard = snapshot.val()
     })
     console.log('Leaderboard', leaderboard)
     this.setState({
-      leaderboard: leaderboard
+      leaderboard: leaderboard,
+      showLeaderboard: true
     })
   }
   copyToClipboard() {
@@ -226,6 +231,8 @@ export class AllResults extends React.Component {
                   >
                     Leaderboard
                   </Button>
+                  {this.state.showLeaderboard ?
+                  <Leaderboard leaderboard={this.state.leaderboard}/> : ("")}
               <small>
                 Want to learn more about the RoastFLIX algorithm?{' '}
                 <a
