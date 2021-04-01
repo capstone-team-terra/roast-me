@@ -56,12 +56,14 @@ class UploadPage extends React.Component {
       },
       body: downloadURL
     })
-    const userObj = {}
-    userObj[this.state.username] = downloadURL
-    await app
-      .database()
-      .ref()
-      .update(userObj)
+    if (this.state.username.length > 0) {
+      const userObj = {}
+      userObj[this.state.username] = downloadURL
+      await app
+        .database()
+        .ref()
+        .update(userObj)
+    }
 
     console.log('RES ---->', res)
     var jsonRes = await res.json()
