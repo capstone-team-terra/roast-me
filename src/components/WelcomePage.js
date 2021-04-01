@@ -42,7 +42,7 @@ class WelcomePage extends React.Component {
             <Row>
               <Col>
                 <h1 className="netflix-red mb-5">
-                  How bad is your Netflix taste?
+                  How bad is your Netflix taste3
                 </h1>
                 <p>
                   Our sophisticated A.I. judges your awful taste in movies and
