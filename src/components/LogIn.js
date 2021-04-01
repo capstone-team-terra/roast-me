@@ -87,10 +87,10 @@ class LogIn extends React.Component {
             <div className="form-group">
               <label>Enter your Username to access your results:</label>
               <Col>
-                <Row>
+                <Row className="mt-3">
                   <input type="userName" placeholder="Your Username Here" value={this.state.value} onChange={(e) => {this.setState({value: e.target.value })}}/>
                 </Row>
-                <Row>
+                <Row className="mt-4">
                   <Button
                     type="submit"
                     variant="outline-light"

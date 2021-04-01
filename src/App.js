@@ -3,7 +3,7 @@ import React from "react";
 import WelcomePage from "./components/WelcomePage";
 import { Switch, Route } from "react-router-dom";
 import LogIn from "./components/LogIn";
-import GitHub from "./GitHub"
+import GitHub from "./components/GitHub"
 
 const App = () => {
   return (

@@ -39,10 +39,10 @@ class SignUp extends React.Component {
             <div className="form-group">
               <label>We need a username to keep track of your results:</label>
               <Col>
-                <Row>
+                <Row className="mt-3">
                   <input type="userName" placeholder=" Your Username Here" />
                 </Row>
-                <Row>
+                <Row className="mt-4">
                   <Button
                     type="submit"
                     variant="outline-light"
