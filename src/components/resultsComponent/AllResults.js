@@ -74,6 +74,7 @@ export class AllResults extends React.Component {
       return `grown some bok choy. Oh, you don't know what that is? Not surprising.`
     if (sumHrs < 24 * 45)
       return `lived an entire life… as a fruit fly. They come out of an egg, grow up, find a mate, lay eggs, lay more eggs, and die fulfilled in one month. Can you really say you’ve done better?`
+    if (sumHrs < 24 * 30 * 6) return `taken an entire semester of classes. Have you considered that? Improving yourself and learning new skills? Or are you content with your miserable existence?`
     if (sumHrs < 24 * 30 * 3)
       return `become a licensed real estate broker. Maybe you could have bought some property yourself and finally move out of your parent’s basement.`
     return `had an entire pregnancy but I guess it’s understandable no one would trust you with a child much less yourself.`
@@ -115,6 +116,11 @@ export class AllResults extends React.Component {
   }
 
   render() {
+    function getRandomInt (min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+    const roastArr=["> Your Netflix was hot-topic-threw-up-on-you-awkward-middle-school-family-friendly-comedy bad.","> Your Netflix was tay-tay-fangirl bad", "> Your Netflix was former-child-star bad","Your Netflix was manic-pixie-dream-girl bad","Your Netflix was your-gen-z-is-showing bad"]
+    const roastStr=roastArr[getRandomInt(0,4)]
     return this.state.typed ? (
       !this.state.loaded ? (
         'No results available at this moment!'
@@ -149,11 +155,21 @@ export class AllResults extends React.Component {
                   <ShowsCount result={this.state.result.views} />
                 </Col>
               </Row>
+              <div>
+                <p>
+                  <strong> Fun Fact: </strong> The creators of this app would love to work at Netflix. Netflix, if you find this, please hire us. Our resumes are available to view <a href="https://drive.google.com/drive/folders/1uWEp2QM3cIOpk3j0_r5k7NxGmUjDlvZV">here</a>.
+                </p>
+              </div>
               <Row className="justify-content-center">
                 <Col data-aos="zoom-out">
                   <ViewCount result={this.state.result.viewcount} />
                 </Col>
               </Row>
+              <div>
+                <p>
+                  <strong> Fun Fact: </strong> Netflix users watched an average of 3.2 hours of video per day.
+                </p>
+              </div>
               <Row className="justify-content-center">
                 <Col data-aos="zoom-out">
                   <RunTime result={this.state.result.runtime} />
@@ -183,7 +199,47 @@ export class AllResults extends React.Component {
             variant="outline-light" onClick={this.copyToClipboard}>Copy link!</Button>
               {this.state.copied ? <div> Copied to clipboard! </div> : <div> </div>} </div>) : <div> </div> }
 
-      </Container>
+              <Row className="justify-content-center">
+                <Col data-aos="zoom-out">
+                  <RegionsCount result={this.state.result.regions} />
+                </Col>
+              </Row>
+              <div>
+                <p>
+                  <strong> Fun Fact: </strong> Netflix is available in nearly every country in the world except China, Crimea, North Korea, and Syria.
+                </p>
+              </div>
+              <small>
+                Want to learn more about the RoastFLIX algorithm?{' '}
+                <a
+                  href="https://soundcloud.com/user-21005105-429685994/netflix-ba-boom"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Click Here
+                </a>
+              </small>
+              {this.state.username.length > 0 ? (
+                <div>
+                  {' '}
+                  <p> Interested in sharing your results with a friend?</p>
+                  <Button
+                    className="mt-5 mb-5"
+                    variant="outline-light"
+                    onClick={this.copyToClipboard}
+                  >
+                    Copy link!
+                  </Button>
+                  {this.state.copied ? (
+                    <div> Copied to clipboard! </div>
+                  ) : (
+                    <div> </div>
+                  )}{' '}
+                </div>
+              ) : (
+                <div> </div>
+              )}
+            </Container>
           ) : (
             ''
           )}
@@ -200,7 +256,7 @@ export class AllResults extends React.Component {
               .pauseFor(2000)
               .deleteAll()
               .typeString(
-                '> Your Netflix was hot-topic-threw-up-on-you-awkward-middle-school-family-friendly-comedy bad.'
+                roastStr
               )
               .start()
               .pauseFor(1000)
