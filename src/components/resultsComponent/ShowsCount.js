@@ -28,7 +28,8 @@ export default function ShowsCount(props) {
     datasets: [
       {
         data: xValues,
-        backgroundColor: 'rgba(234, 87, 102, 0.6)'
+        backgroundColor: '#db0000',
+        borderColor: 'white'
       }
     ]
   }
@@ -94,6 +95,15 @@ export default function ShowsCount(props) {
           it
           <span style={{color: 'rgba(234, 87, 102)'}}> {top1Count}</span> times
           ! Wow.
+        </p>
+        <p
+          style={{
+            fontSize: '10px',
+            fontStyle: 'italic',
+            color: 'rgba(82, 179, 217, 1)'
+          }}
+        >
+          +25 Basic Points
         </p>
       </Card>
     </ChartCard>

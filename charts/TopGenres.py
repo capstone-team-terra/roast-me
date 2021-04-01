@@ -14,6 +14,15 @@ def genresCounter(df):
     flattened_ls = [item for ls in tags_ls for item in ls]
     counterDist = Counter(flattened_ls)
     dictionary = {}
+    total = (len(flattened_ls))
+    # these are the genres we deemed basic
+    basic_genres = {'Drama', 'Comedy', 'Action', 'Adventure', 'Romance', 'Family', 'Animation'}
+    basic_count = 0
     for key, value in counterDist.items():
         dictionary[key] = value
-    return dictionary
+        # add up all shows/movies that fall under basic genres
+        if key in basic_genres:
+            basic_count = basic_count + value
+    # score is based on percentage of basic things watched out of total things watched
+    score = int(basic_count / total * 25)
+    return {'data': dictionary, 'score': score}

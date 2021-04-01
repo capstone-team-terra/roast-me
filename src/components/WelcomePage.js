@@ -42,13 +42,13 @@ class WelcomePage extends React.Component {
             <Row>
               <Col>
                 <h1 className="netflix-red mb-5">
-                  How bad is your Netflix taste?
+                  How bad is your Netflix taste@
                 </h1>
                 <p>
                   Our sophisticated A.I. judges your awful taste in movies and
                   TV shows. <br />
-                  Don't worry if you don't have a Netflix account-we
-                  have a surprise for you!
+                  Don't worry if you don't have a Netflix account-we have a
+                  surprise for you!
                 </p>
               </Col>
             </Row>
@@ -67,17 +67,25 @@ class WelcomePage extends React.Component {
                   delay: 35
                 }}
               />
-              </Row>
-              {this.state.typingDone && (
+            </Row>
+            {this.state.typingDone && (
               <Row className="mt-3 justify-content-center">
-                  <Button variant="outline-light" className="mr-3" onClick={this.handleLogIn}>
-                    Yes
-                  </Button>
-                  <Button variant="outline-light" className="ml-3" onClick={this.handleSignUp}>
-                    No
-                  </Button>
+                <Button
+                  variant="outline-light"
+                  className="mr-3"
+                  onClick={this.handleLogIn}
+                >
+                  Yes
+                </Button>
+                <Button
+                  variant="outline-light"
+                  className="ml-3"
+                  onClick={this.handleSignUp}
+                >
+                  No
+                </Button>
               </Row>
-              )}
+            )}
           </Container>
         )}
       </div>

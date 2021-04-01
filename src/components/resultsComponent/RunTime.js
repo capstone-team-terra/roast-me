@@ -30,8 +30,8 @@ export default function RunTime(props) {
     datasets: [
       {
         data: yValues,
-        backgroundColor: 'rgba(244, 162, 97, 0.6)',
-        borderColor: 'rgba(244, 162, 97, 0.6)',
+        backgroundColor: '#db0000',
+        borderColor: 'white',
         pointHoverRadius: 20,
         pointHoverBorderWidth: 5
       }
@@ -94,12 +94,21 @@ export default function RunTime(props) {
           <p style={{fontSize: '20px', fontStyle: 'italic'}}>
             You watched{' '}
             <span style={{color: 'rgba(234, 87, 102)'}}>{sumHrs}</span> hours
-            worth of Netflix shows since you signed up...{' '}
+            worth of Netflix since you signed up...{' '}
           </p>
           <p style={{fontSize: '15px', fontStyle: 'italic'}}>
             That is about{' '}
             <span style={{color: 'rgba(234, 87, 102)'}}>{sumDays}</span> days
             (or {sumMonth} months) you wasted.. Just saying.
+          </p>
+          <p
+            style={{
+              fontSize: '10px',
+              fontStyle: 'italic',
+              color: 'rgba(82, 179, 217, 1)'
+            }}
+          >
+            +{result.score} Basic Points
           </p>
         </div>
       </Card>

@@ -30,8 +30,8 @@ export default function ViewCount(props) {
       {
         labels: 'Your View Count',
         data: yValues,
-        backgroundColor: 'rgba(87, 121, 234, 0.6)',
-        borderColor: 'rgba(87, 121, 234, 0.6)',
+        backgroundColor: '#db0000',
+        borderColor: 'white',
         pointHoverRadius: 20,
         pointHoverBorderWidth: 5
       }

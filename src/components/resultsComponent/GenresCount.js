@@ -4,8 +4,8 @@ import {Card} from 'react-bootstrap'
 import ChartCard from './Styling/ChartTheme'
 
 export default function GenresCount(props) {
-  const {result} = props
-  const resultsArr = Object.entries(result)
+  const {data, score} = props.result
+  const resultsArr = Object.entries(data)
 
   //sort the data to large to small
   const allSorted = resultsArr.sort((a, b) => b[1] - a[1])
@@ -20,11 +20,11 @@ export default function GenresCount(props) {
       {
         label: 'Watches',
         backgroundColor: [
-          'rgba(234, 87, 102)',
-          'rgb(155, 67, 8)',
-          'rgb(223, 54, 12)',
-          '#666699',
-          '#CC9933'
+          '#db0000',
+          '#333333',
+          '#d3d3d3',
+          '#f5f3f4',
+          '#52b3d9'
         ],
         data: numArr,
         hoverOffset: 30
@@ -49,8 +49,8 @@ export default function GenresCount(props) {
                     display: true
                   }
                 }}
-                width={500}
-                height={300}
+                width={300}
+                height={200}
               />
             </div>
             <div>
@@ -60,6 +60,15 @@ export default function GenresCount(props) {
                   {sorted[0][1]}{' '}
                 </span>
                 {sorted[0][0]} shows... Such great taste!
+              </p>
+              <p
+                style={{
+                  fontSize: '10px',
+                  fontStyle: 'italic',
+                  color: 'rgba(82, 179, 217, 1)'
+                }}
+              >
+                +{score} Basic Points
               </p>
             </div>
           </Card>

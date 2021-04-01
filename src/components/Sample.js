@@ -64,11 +64,17 @@ const results = {
     percents: [60, 10, 30],
     score: 23,
     topShow: ['Friends', 'Pulp Fiction', 'We Bare Bears'],
-    bottomShow: [
-      'Project Power',
-      'The End of the Fucking World',
-      'Repair Shop'
-    ]
+    bottomShow: ['Project Power', 'The End of the Fucking World', 'Repair Shop']
+  },
+  regions: {
+    regions: {
+      'United States': 50,
+      Japan: 30,
+      Canada: 25,
+      Mexico: 10,
+      Spain: 5
+    },
+    score: 15
   }
 }
 

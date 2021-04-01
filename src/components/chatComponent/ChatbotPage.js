@@ -32,7 +32,7 @@ class ChatbotPage extends React.Component {
     this.setState({clicked: true})
   }
   render() {
-    const genresCount = this.props.result.genres
+    const genresCount = this.props.result.genres.data
     const views = this.props.result.views
     const viewCounts = this.props.result.viewcount
     const resultsArr = Object.entries(genresCount)
@@ -194,7 +194,7 @@ class ChatbotPage extends React.Component {
       }
     ]
     return this.state.clicked ? (
-      <AllResults result={this.state.result} username={this.state.username}/>
+      <AllResults result={this.state.result} username={this.state.username} />
     ) : (
       <div>
         <ThemeProvider theme={theme}>
