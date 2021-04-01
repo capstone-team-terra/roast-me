@@ -21,9 +21,12 @@ def genres():
 @pytest.fixture
 def time():
   return runTime(pickleThis('testNetflixViewingHistory.csv'))
+  
+@pytest.fixture
+def popularity(data):
+  return popularityCounter(data)
 
 def test_pickleData(data):
-  #print(f"{bcolors.BOLD}Columns in the merged data file should be 'primaryTitle', 'averageRating', 'numVotes', 'Title', 'show_type', 'runtimeMinutes', 'genres', 'tconst', 'Date', 'country'")
   assert all([a == b for a, b in zip(data.columns.values, ['primaryTitle', 'averageRating', 'numVotes', 'Title', 'show_type', 'runtimeMinutes', 'genres', 'tconst', 'Date', 'country'])]), "Columns in dataframe are incorrect."
   assert len(data.index) == 21, "Number of rows in the dataframe should be 21."
 
@@ -34,10 +37,7 @@ def test_mostViewed(views):
   assert views['High School Musical'] == 2, "High School Musical should have 2 view counts."
   assert views['Jumanji'] == 1, "Jumanji should have 1 view count."
 
-def test_topGenres(genres):
-  assert type(genres) is dict
-  assert len(genres["data"]) == 14, "Dictionary should contain 14 key-value pairs, data and scores"
-  assert genres["data"]["Adventure"] == 4, "Adventure genres should have 4 view counts."
+
 
 def test_topGenres(genres):
   assert type(genres) is dict
@@ -54,3 +54,11 @@ def test_runTime(time):
   assert time["score"] == 4, "Run time score should be 4"
   assert time["data"]["2014-12"] == 197.0, "2014-12 should have 197 view counts."
   assert time["data"]["2014-10"] == 85.0, "2014-12 should have 85 view counts."
+  
+def test_mostPopular(popularity):
+  assert type(popularity) is dict
+  assert type(popularity['percents']) is list, "Popularity should have percents list."
+  assert len(popularity['percents']) == 3, "Popularity should have percents list of length 3."
+  assert 'Jumanji' in popularity['topShow'], "Jumanji should be in the topShow list."
+  assert 'High School Musical' in popularity['topShow'], "High School Musical should be in the topShow list."
+  assert len(popularity['bottomShow']) == 0, "There should be no shows in the bottomShow list."
