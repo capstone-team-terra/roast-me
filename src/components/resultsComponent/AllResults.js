@@ -10,6 +10,8 @@ import {Col, Row, Button, Container, Navbar} from 'react-bootstrap'
 import Summary from './Summary'
 import aos from 'aos'
 import 'aos/dist/aos.css'
+import {app} from '../../base'
+
 
 export class AllResults extends React.Component {
   constructor() {
@@ -20,13 +22,15 @@ export class AllResults extends React.Component {
       typed: false,
       showResult: false,
       username: '',
-      copied: false
+      copied: false,
+      leaderboard: []
     }
     this.handleDoneTyping = this.handleDoneTyping.bind(this)
     this.handleShowResult = this.handleShowResult.bind(this)
     this.copyToClipboard = this.copyToClipboard.bind(this)
     this.getRuntimeFunFact = this.getRuntimeFunFact.bind(this)
     this.getGenreFunFact = this.getGenreFunFact.bind(this)
+    this.loadLeaderboard = this.loadLeaderboard.bind(this)
   }
 
   componentDidMount() {
@@ -46,6 +50,30 @@ export class AllResults extends React.Component {
   }
   handleShowResult() {
     this.setState({showResult: true})
+  }
+  loadLeaderboard() {
+    const {genres, regions, popularity, runtime} = this.state.result
+    const totalScore = Math.floor(
+      genres.score + regions.score + popularity.score + runtime.score
+    )
+    const scoresRef = app.database().ref('scores')
+    console.log('User logged in: ', this.state.username)
+    app
+    .database()
+    .ref().child(this.state.username).update({score: totalScore})
+    const leaderboard = []
+    app.database().ref().orderByChild('score').on('value', snapshot => {
+      snapshot.forEach(user => {
+        console.log('user', user)
+        leaderboard.push({[`${user.key}`]: user.val().score})
+      })
+      // console.log('snapshot', snapshot.val())
+      // leaderboard = snapshot.val()
+    })
+    console.log('Leaderboard', leaderboard)
+    this.setState({
+      leaderboard: leaderboard
+    })
   }
   copyToClipboard() {
     let dummy = document.createElement('input')
@@ -191,6 +219,13 @@ export class AllResults extends React.Component {
                   <RegionsCount result={this.state.result.regions} />
                 </Col>
               </Row>
+              <Button
+                    className="mt-5 mb-5"
+                    variant="outline-light"
+                    onClick={this.loadLeaderboard}
+                  >
+                    Leaderboard
+                  </Button>
               <small>
                 Want to learn more about the RoastFLIX algorithm?{' '}
                 <a

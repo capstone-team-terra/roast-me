@@ -61,8 +61,8 @@ class UploadPage extends React.Component {
       userObj[this.state.username] = downloadURL
       await app
         .database()
-        .ref()
-        .update(userObj)
+        .ref().child(this.state.username)
+        .set({'file': downloadURL, 'score': 0})
     }
 
     console.log('RES ---->', res)
