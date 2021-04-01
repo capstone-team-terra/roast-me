@@ -11,9 +11,11 @@ export default function Summary(props) {
   useEffect(() => {
     aos.init({duration: 2000})
   }, [])
-  const {popularity, runtime, genres} = props
+  const {popularity, runtime, genres, regions} = props
   console.log('PROPS', props)
-  const totalScore = Math.floor(25 + 25 + popularity.score + runtime.score)
+  const totalScore = Math.floor(
+    genres.score + regions.score + popularity.score + runtime.score
+  )
   const popularityScorePercentage = popularity.score / 25 * 100
   const watchTimeScorePercentage = runtime.score / 25 * 100
 
@@ -24,7 +26,7 @@ export default function Summary(props) {
     Object.keys(runtime.data).reduce((acc, key) => acc + runtime.data[key], 0) /
       60
   )
-  const favGenre = Object.entries(genres).sort((a, b) => b[1] - a[1])[0][0]
+  const favGenre = Object.entries(genres.data).sort((a, b) => b[1] - a[1])[0][0]
 
   return (
     <Container className="text-center" style={{marginTop: 150}}>
@@ -119,16 +121,44 @@ export default function Summary(props) {
                     text={`${percentage}%`}
                     strokeWidth={6}
                     styles={buildStyles({
-                      pathTransitionDuration: 1.5,
+                      pathTransitionDuration: 1.5
                     })}
                   />
                 )
               }}
             </VisibilitySensor>
           </div>
-          <p className="mt-5">
-            Based on your viewing history, you are {totalScore}% basic!
+        </Col>
+        <Col xs sm md={6}>
+          <p className="mt-10">
+            Based on the following data, you are {totalScore}% basic!
           </p>
+          <p className="mt-5">
+            {' '}
+            <strong>Here's how your score breaks down:</strong>
+          </p>
+          <Row className="justify-content-center">
+            <Col xs sm md={6}>
+              <Row className="justify-content-center">Watchtime:</Row>
+              <Row className="justify-content-center">Top Genres:</Row>
+              <Row className="justify-content-center">Popularity:</Row>
+              <Row className="justify-content-center">Diversity:</Row>
+              <Row className="font-weight-bold justify-content-center">
+                Composite Score:
+              </Row>
+            </Col>
+            <Col style={{color: 'rgba(82, 179, 217, 1)'}} xs sm md={6}>
+              <Row className="justify-content-center">{runtime.score}/25</Row>
+              <Row className="justify-content-center">{genres.score}/25</Row>
+              <Row className="justify-content-center">
+                {popularity.score}/25
+              </Row>
+              <Row className="justify-content-center">{regions.score}/25</Row>
+              <Row className="font-weight-bold justify-content-center">
+                {totalScore}/100
+              </Row>
+            </Col>
+          </Row>
         </Col>
       </Row>
     </Container>

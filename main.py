@@ -8,19 +8,18 @@ from charts.TopGenres import genresCounter
 from charts.WatchTime import watchFrequency
 from charts.MostPopular import popularityCounter
 from charts.RunTime import runTime
+from charts.TopRegions import regionsCounter
 
 app = Flask(__name__)
 
 
 @app.route('/')
 def index():
-    # return 'Hello World!'
     url = url_for('static', filename='bundle.js')
     return render_template('index.html', bundle=url)
 
 @app.route('/results/<user>')
 def resultsForUser(user):
-    #return 'Hello World!'
     url = url_for('static', filename='bundle.js')
     return render_template('index.html', bundle=url)
 
@@ -31,20 +30,18 @@ def handleFileUpload():
     data = request.data.decode("utf-8")
     df = pickleThis(data)
     mostViewed = viewsCounter(data)
-    #print('mostViewed ---> ', mostViewed)
     topGenres = genresCounter(df)
-    #print('topGenres ---> ', topGenres)
     mostPopular = popularityCounter(df)
-    # print('mostPopular ---> ', mostPopular)
     watchFreq = watchFrequency(data)
-    #print('watchFreq ---> ', watchFreq)
     watchTime = runTime(df)
-    #print('watchTime ---> ', watchTime)
+    topRegions = regionsCounter(df)
+
     return {'genres': topGenres,
             'views': mostViewed,
             'popularity': mostPopular,
             'viewcount': watchFreq,
-            'runtime': watchTime
+            'runtime': watchTime,
+            'regions': topRegions
             }
 
 

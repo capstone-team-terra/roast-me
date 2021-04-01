@@ -25,7 +25,7 @@ def runTime(df_final):
     sumHrs = sumMin / 60
     numMonths = sum_per_month.size
     avgViewHoursPerYear = sumHrs/numMonths
-    score = 25 * (avgViewHoursPerYear / (2 * 24))
+    score = int(25 * (avgViewHoursPerYear / (2 * 24)))
 
     # convert the series to dictionary
     dictionary = dict(zip(sum_per_month.index.format(), sum_per_month))

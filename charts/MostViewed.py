@@ -3,6 +3,7 @@ import pandas as pd
 
 def viewsCounter(data):
     df = pd.read_csv(data)
+    df.dropna()
     dict = {}
 
     def countShow(title):

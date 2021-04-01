@@ -24,7 +24,7 @@ def pickleThis(data):
 
     # df_merged = df_merged.drop_duplicates(subset='primaryTitle', keep='first')
     df_merged = df_merged[["primaryTitle", "averageRating", "numVotes",
-                           "Title", "show_type", "runtimeMinutes", "genres", "tconst", "Date"]]
+                           "Title", "show_type", "runtimeMinutes", "genres", "tconst", "Date", "country"]]
     return df_merged
 #mergedData_file = 'merged_data.pkl'
 #pickle.dump(df_merged, open(mergedData_file, 'wb'))
