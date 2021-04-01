@@ -41,18 +41,18 @@ export default function GenresCount(props) {
                 Top 5 most viewed genres
               </Card.Title>
             </div>
-            <div>
-              <Pie
-                data={state}
-                options={{
-                  legend: {
-                    display: true
-                  }
-                }}
-                width={300}
-                height={200}
-              />
-            </div>
+
+            <Pie
+              data={state}
+              options={{
+                legend: {
+                  display: true
+                }
+              }}
+              width={500}
+              height={300}
+            />
+
             <div>
               <p style={{fontSize: '20px', fontStyle: 'italic'}}>
                 You watched{' '}
