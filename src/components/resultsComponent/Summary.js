@@ -11,16 +11,18 @@ export default function Summary(props) {
   useEffect(() => {
     aos.init({duration: 2000})
   }, [])
-  const {popularity, runtime, genres, regions} = props
+  const {popularity, runtime, genres, regions, viewcount} = props
   console.log('PROPS', props)
   const totalScore = Math.floor(
     genres.score + regions.score + popularity.score + runtime.score
   )
-  const popularityScorePercentage = popularity.score / 25 * 100
-  const watchTimeScorePercentage = runtime.score / 25 * 100
 
   //overview data
-  const topshow = popularity.topShow[0]
+  const totalViews = Object.keys(viewcount).reduce(
+    (acc, key) => acc + viewcount[key],
+    0
+  )
+
   const yearJoined = moment(Object.keys(runtime.data)[0]).format('YYYY')
   const totalTime = Math.floor(
     Object.keys(runtime.data).reduce((acc, key) => acc + runtime.data[key], 0) /
@@ -58,24 +60,6 @@ export default function Summary(props) {
           <div style={{width: '80%', margin: 'auto'}}>
             <CircularProgressbar
               value={100}
-              text={`${topshow}`}
-              strokeWidth={2}
-              styles={buildStyles({
-                pathTransitionDuration: 1.5,
-                pathColor: '#db0000',
-                textColor: 'white',
-                trailColor: '#d6d6d6'
-              })}
-            />
-          </div>
-          <h2 className="mt-3" style={{fontSize: '1em'}}>
-            Top Show
-          </h2>
-        </Col>
-        <Col xs sm md={3} data-aos="zoom-in-up">
-          <div style={{width: '80%', margin: 'auto'}}>
-            <CircularProgressbar
-              value={100}
               text={`${totalTime}hrs`}
               strokeWidth={2}
               styles={buildStyles({
@@ -88,6 +72,24 @@ export default function Summary(props) {
           </div>
           <h2 className="mt-3" style={{fontSize: '1em'}}>
             Total Time
+          </h2>
+        </Col>
+        <Col xs sm md={3} data-aos="zoom-in-up">
+          <div style={{width: '80%', margin: 'auto'}}>
+            <CircularProgressbar
+              value={100}
+              text={`${totalViews}`}
+              strokeWidth={2}
+              styles={buildStyles({
+                pathTransitionDuration: 1.5,
+                pathColor: '#db0000',
+                textColor: 'white',
+                trailColor: '#d6d6d6',
+              })}
+            />
+          </div>
+          <h2 className="mt-3" style={{fontSize: '1em'}}>
+            Total Views
           </h2>
         </Col>
         <Col xs sm md={3} data-aos="zoom-in-up">

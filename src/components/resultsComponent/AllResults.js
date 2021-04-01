@@ -160,10 +160,7 @@ export class AllResults extends React.Component {
                 </Col>
               </Row>
               <div>
-                <p>
-                  <strong> Fun Fact: </strong> With the time you spent on
-                  Netflix, you could have {this.getRuntimeFunFact()}
-                </p>
+                  <p><strong> Fun Fact: </strong> With the time you spent on Netflix, you could have {this.getRuntimeFunFact()}</p>
               </div>
               <Row className="justify-content-center">
                 <Col data-aos="zoom-out">
@@ -171,9 +168,7 @@ export class AllResults extends React.Component {
                 </Col>
               </Row>
               <div>
-                <p>
-                  <strong> Fun Fact: </strong> {this.getGenreFunFact()}
-                </p>
+                  <p><strong> Fun Fact: </strong> {this.getGenreFunFact()}</p>
               </div>
               <Row className="justify-content-center">
                 <Col data-aos="zoom-out">
@@ -181,47 +176,14 @@ export class AllResults extends React.Component {
                 </Col>
               </Row>
               <div>
-                <p>
-                  <strong> Fun Fact: </strong> The most obscure film of all time
-                  is something you have never heard of.
-                </p>
+                  <p><strong> Fun Fact: </strong> The most obscure film of all time is something you have never heard of.</p>
               </div>
-              <Row className="justify-content-center">
-                <Col data-aos="zoom-out">
-                  <RegionsCount result={this.state.result.regions} />
-                </Col>
-              </Row>
-              <small>
-                Want to learn more about the RoastFLIX algorithm?{' '}
-                <a
-                  href="https://soundcloud.com/user-21005105-429685994/netflix-ba-boom"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Click Here
-                </a>
-              </small>
-              {this.state.username.length > 0 ? (
-                <div>
-                  {' '}
-                  <p> Interested in sharing your results with a friend?</p>
-                  <Button
-                    className="mt-5 mb-5"
-                    variant="outline-light"
-                    onClick={this.copyToClipboard}
-                  >
-                    Copy link!
-                  </Button>
-                  {this.state.copied ? (
-                    <div> Copied to clipboard! </div>
-                  ) : (
-                    <div> </div>
-                  )}{' '}
-                </div>
-              ) : (
-                <div> </div>
-              )}
-            </Container>
+              {this.state.username.length > 0 ? (<div> <p> Interested in sharing your results with a friend?</p>
+              <Button className="mt-5 mb-5"
+            variant="outline-light" onClick={this.copyToClipboard}>Copy link!</Button>
+              {this.state.copied ? <div> Copied to clipboard! </div> : <div> </div>} </div>) : <div> </div> }
+
+      </Container>
           ) : (
             ''
           )}
