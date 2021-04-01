@@ -115,6 +115,11 @@ export class AllResults extends React.Component {
   }
 
   render() {
+    function getRandomInt (min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+    const roastArr=["> Your Netflix was hot-topic-threw-up-on-you-awkward-middle-school-family-friendly-comedy bad.","> Your Netflix was tay-tay-fangirl bad", "> Your Netflix was former-child-star bad","Your Netflix was manic-pixie-dream-girl bad","Your Netflix was your-gen-z-is-showing bad"]
+    const roastStr=roastArr[getRandomInt(0,4)]
     return this.state.typed ? (
       !this.state.loaded ? (
         'No results available at this moment!'
@@ -238,7 +243,7 @@ export class AllResults extends React.Component {
               .pauseFor(2000)
               .deleteAll()
               .typeString(
-                '> Your Netflix was hot-topic-threw-up-on-you-awkward-middle-school-family-friendly-comedy bad.'
+                roastStr
               )
               .start()
               .pauseFor(1000)
