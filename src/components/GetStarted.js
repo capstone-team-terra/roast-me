@@ -86,7 +86,7 @@ const GetStarted = () => {
                 onInit={(typewriter) => {
                   typewriter
                     .typeString(
-                      "I can't judge your taste without seeing your Netflix view history. <br /> If you really don't want to, you can check out our analysis based on sample data."
+                      "I can't judge your taste without seeing your viewing history. <br /> If you really don't want to, you can check out our demo first."
                     )
                     .pauseFor(1500)
                     .callFunction(() => {
@@ -112,7 +112,7 @@ const GetStarted = () => {
                       className="mb-5"
                       onClick={handleSampleButton}
                     >
-                      Show me your sample analysis first
+                      Show me your demo
                     </Button>
                   </Col>
                 </Row>

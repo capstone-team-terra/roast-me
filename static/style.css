@@ -27,6 +27,8 @@ code {
   color: #db0000;
 }
 
+/* github logo styling */
+
 #triangle {
   display: block;
   width: 80px;
@@ -44,4 +46,39 @@ code {
   top: -3px;
   right: -45px;
   transform: rotate(45deg);
+}
+
+/* footer styling */
+
+#footer{
+  position: absolute;
+  bottom: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#footer p {
+  font-size: 1rem;
+  color: gray;
+}
+
+/* welcome page styling */
+#welcome h1 {
+  font-size: 3rem;
+}
+
+#welcome p {
+  font-size: 1.5rem;
+  line-height: 35px;
+}
+
+#demo-text {
+  font-size: 1rem;
+  font-style: italic;
+}
+
+/* disclaimer text */
+
+.disclaimer-text{
+  font-size: 1.5rem;
 }
