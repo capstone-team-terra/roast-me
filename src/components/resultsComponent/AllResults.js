@@ -10,6 +10,8 @@ import {Col, Row, Button, Container, Navbar} from 'react-bootstrap'
 import Summary from './Summary'
 import aos from 'aos'
 import 'aos/dist/aos.css'
+import {app} from '../../base'
+import Leaderboard from './Leaderboard'
 
 export class AllResults extends React.Component {
   constructor() {
@@ -20,13 +22,16 @@ export class AllResults extends React.Component {
       typed: false,
       showResult: false,
       username: '',
-      copied: false
+      copied: false,
+      leaderboard: [],
+      showLeaderboard: false
     }
     this.handleDoneTyping = this.handleDoneTyping.bind(this)
     this.handleShowResult = this.handleShowResult.bind(this)
     this.copyToClipboard = this.copyToClipboard.bind(this)
     this.getRuntimeFunFact = this.getRuntimeFunFact.bind(this)
     this.getGenreFunFact = this.getGenreFunFact.bind(this)
+    this.loadLeaderboard = this.loadLeaderboard.bind(this)
   }
 
   componentDidMount() {
@@ -44,8 +49,44 @@ export class AllResults extends React.Component {
     audio.play()
     this.setState({typed: true})
   }
+
   handleShowResult() {
     this.setState({showResult: true})
+  }
+
+  async loadLeaderboard() {
+    const {genres, regions, popularity, runtime} = this.state.result
+    const totalScore = Math.floor(
+      genres.score + regions.score + popularity.score + runtime.score
+    )
+    const scoresRef = app.database().ref('scores')
+    await app
+      .database()
+      .ref()
+      .child(this.state.username)
+      .update({score: totalScore})
+    let leaderboard = []
+
+    await app
+      .database()
+      .ref()
+      .orderByChild('score')
+      .once('value')
+      .then(function(snapshot) {
+        // const obj = snapshot.val()
+        // console.log('obj', obj)
+        snapshot.forEach((user, index) => {
+          const username = user.key
+          const score = user.val().score
+          console.log('user', username, 'score', score)
+          leaderboard.push({username: username, score: score})
+        })
+      })
+    console.log('Leaderboard', leaderboard)
+    this.setState({
+      leaderboard: leaderboard,
+      showLeaderboard: true
+    })
   }
   copyToClipboard() {
     let dummy = document.createElement('input')
@@ -207,6 +248,18 @@ export class AllResults extends React.Component {
                   <RegionsCount result={this.state.result.regions} />
                 </Col>
               </Row>
+              <Button
+                className="mt-5 mb-5"
+                variant="outline-light"
+                onClick={this.loadLeaderboard}
+              >
+                Leaderboard
+              </Button>
+              {this.state.showLeaderboard ? (
+                <Leaderboard leaderboard={this.state.leaderboard} />
+              ) : (
+                ''
+              )}
               <div>
                 <p>
                   <strong> Fun Fact: </strong> Netflix is available in nearly every country in the world except China, Crimea, North Korea, and Syria.
