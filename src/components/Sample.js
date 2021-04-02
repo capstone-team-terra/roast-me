@@ -7,13 +7,13 @@ import SignUp from "./SignUp"
 
 const results = {
   genres: {
-    data:{
-    Action: 10,
-    Comedy: 120,
-    Fantasy: 20,
-    Animation: 10,
-    Drama: 10,
-    Crime: 30
+    data: {
+      Action: 10,
+      Comedy: 120,
+      Fantasy: 20,
+      Animation: 10,
+      Drama: 10,
+      Crime: 30
     },
     score: 20
   },
@@ -121,7 +121,6 @@ const Sample = () => {
               <Chatbot result={results} />
             </Container>
           ) : (
-            // <Button onClick={() => setTypingDone(true)}>Testing</Button>
             <Typewriter
               onInit={typewriter => {
                 typewriter
