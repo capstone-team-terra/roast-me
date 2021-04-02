@@ -102,12 +102,15 @@ export class AllResults extends React.Component {
     this.setState({copied: true})
   }
 
+  // eslint-disable-next-line complexity
   render() {
     function getRandomInt (min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
     const roastArr=["> Your Netflix was hot-topic-threw-up-on-you-awkward-middle-school-family-friendly-comedy bad.","> Your Netflix was tay-tay-fangirl bad", "> Your Netflix was former-child-star bad","Your Netflix was manic-pixie-dream-girl bad","Your Netflix was your-gen-z-is-showing bad"]
     const roastStr=roastArr[getRandomInt(0,4)]
+
+
     return this.state.typed ? (
       !this.state.loaded ? (
         'No results available at this moment!'
@@ -144,7 +147,7 @@ export class AllResults extends React.Component {
               </Row>
               <div>
                 <p>
-                  <strong style={{color: 'red'}}> Fun Fact: </strong> The creators of this app would love to work at Netflix. Netflix, if you find this, please hire us. Our resumes are available to view <a href="https://drive.google.com/drive/folders/1uWEp2QM3cIOpk3j0_r5k7NxGmUjDlvZV">here</a>.
+                  <strong style={{color: 'red'}}> Fun Fact: </strong> The creators of this app are available for hire. Our resumes are available to view <a href="https://drive.google.com/drive/folders/1qQ2jdv8hcN-xUHZ983_6SDMwjJgHQgDo" target="_blank" rel="noopener noreferrer">here</a>.
                 </p>
               </div>
               <Row className="justify-content-center">
@@ -154,7 +157,7 @@ export class AllResults extends React.Component {
               </Row>
               <div>
                 <p>
-                  <strong style={{color: 'red'}}> Fun Fact: </strong> Netflix users watched an average of 3.2 hours of video per day.
+                  <strong style={{color: 'red'}}> Fact: </strong> Netflix users watched an average of 3.2 hours of video per day.
                 </p>
               </div>
               <Row className="justify-content-center">
@@ -196,6 +199,11 @@ export class AllResults extends React.Component {
                   <RegionsCount result={this.state.result.regions} />
                 </Col>
               </Row>
+              <div>
+                <p>
+                  <strong style={{color: 'red'}}> Fun Fact: </strong> Netflix is available in nearly every country in the world except China, Crimea, North Korea, and Syria.
+                </p>
+              </div>
               <Button
                 className="mt-5 mb-5"
                 variant="outline-light"
@@ -208,11 +216,6 @@ export class AllResults extends React.Component {
               ) : (
                 ''
               )}
-              <div>
-                <p>
-                  <strong style={{color: 'red'}}> Fun Fact: </strong> Netflix is available in nearly every country in the world except China, Crimea, North Korea, and Syria.
-                </p>
-              </div>
               {this.state.username.length > 0 ? (
                 <div>
                   {' '}
@@ -233,15 +236,21 @@ export class AllResults extends React.Component {
               ) : (
                 <div> </div>
               )}
-              <div className='mt-5 mb-3' style={{fontSize: '0.8em'}}>
-                Want to learn more about the RoastFLIX algorithm?{' '}
-                <a
-                  href="https://soundcloud.com/user-21005105-429685994/netflix-ba-boom"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Click Here
-                </a>
+              <div>
+                <div className='mt-5 mb-3' style={{fontSize: '0.8em'}}>
+                  Want to learn more about the RoastFLIX algorithm?{' '}
+                  <a
+                    href="https://soundcloud.com/user-21005105-429685994/netflix-ba-boom"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Click Here
+                  </a>
+                </div>
+                <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" className="bi bi-caret-left" viewBox="0 0 16 16">
+  <path d="M10 12.796V3.204L4.519 8 10 12.796zm-.659.753-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753z"/>
+</svg></div>
               </div>
             </Container>
           ) : (

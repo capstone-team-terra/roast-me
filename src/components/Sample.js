@@ -3,6 +3,7 @@ import {Container, Button, Navbar, Nav} from 'react-bootstrap'
 import Typewriter from 'typewriter-effect'
 import UploadPage from './UploadPage'
 import Chatbot from './chatComponent/ChatbotPage'
+import SignUp from "./SignUp"
 
 const results = {
   genres: {
@@ -93,7 +94,7 @@ const Sample = () => {
   return (
     <div>
       {yesButton ? (
-        <UploadPage />
+        <SignUp />
       ) : (
         <div>
           <Navbar expand='md'
