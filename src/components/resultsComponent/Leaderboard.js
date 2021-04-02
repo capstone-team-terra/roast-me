@@ -1,6 +1,7 @@
 import React from 'react'
 import {Card, Button} from 'react-bootstrap'
 import ChartCard from './Styling/ChartTheme'
+import { MDBDataTable } from 'mdbreact';
 
 
 export default function Leaderboard(props) {
