@@ -13,6 +13,17 @@ export default function ViewCount(props) {
   //get only past 1 year data
   const pastYear = resultsArr.slice(-12)
 
+  //peak month
+  let max = 0
+  let maxMonth = ''
+  for (let key in result){
+    if (result[key] > max){
+      max = result[key]
+      maxMonth = key
+    }
+  }
+  maxMonth = moment(maxMonth).format('MMMM')
+
   //total view count
   const totalSum = Object.keys(result).reduce(
     (acc, key) => acc + result[key],
@@ -84,16 +95,16 @@ export default function ViewCount(props) {
   return (
     <ChartCard>
       <Card>
-        <Card.Title style={{textAlign: 'center', fontSize: 30}}>
-          Total number of times you watched Netflix{' '}
+        <Card.Title style={{textAlign: 'center', fontSize: 45}}>
+          Number of times you watched Netflix{' '}
         </Card.Title>
         <div>
           <Line data={resultData} options={options} width={600} height={400} />
         </div>
         <p style={{fontSize: '20px', fontStyle: 'italic'}}>
-          You watched total of{' '}
-          <span style={{color: 'rgba(234, 87, 102)'}}> {totalSum} </span>
-          shows since you signed up...
+          Your peak from last year was in {' '}
+          <span style={{color: 'rgba(234, 87, 102)'}}> {maxMonth} </span>
+          and you watched Netflix {max} times !
         </p>
       </Card>
     </ChartCard>

@@ -46,6 +46,7 @@ export class AllResults extends React.Component {
   }
   handleShowResult() {
     this.setState({showResult: true})
+    window.scrollTo(0, 500)
   }
   copyToClipboard() {
     let dummy = document.createElement('input')
@@ -157,7 +158,7 @@ export class AllResults extends React.Component {
               </Row>
               <div>
                 <p>
-                  <strong> Fun Fact: </strong> The creators of this app would love to work at Netflix. Netflix, if you find this, please hire us. Our resumes are available to view <a href="https://drive.google.com/drive/folders/1uWEp2QM3cIOpk3j0_r5k7NxGmUjDlvZV">here</a>.
+                  <strong style={{color: 'red'}}> Fun Fact: </strong> The creators of this app would love to work at Netflix. Netflix, if you find this, please hire us. Our resumes are available to view <a href="https://drive.google.com/drive/folders/1uWEp2QM3cIOpk3j0_r5k7NxGmUjDlvZV">here</a>.
                 </p>
               </div>
               <Row className="justify-content-center">
@@ -167,7 +168,7 @@ export class AllResults extends React.Component {
               </Row>
               <div>
                 <p>
-                  <strong> Fun Fact: </strong> Netflix users watched an average of 3.2 hours of video per day.
+                  <strong style={{color: 'red'}}> Fun Fact: </strong> Netflix users watched an average of 3.2 hours of video per day.
                 </p>
               </div>
               <Row className="justify-content-center">
@@ -176,7 +177,7 @@ export class AllResults extends React.Component {
                 </Col>
               </Row>
               <div>
-                  <p><strong> Fun Fact: </strong> With the time you spent on Netflix, you could have {this.getRuntimeFunFact()}</p>
+                  <p><strong style={{color: 'red'}}> Fun Fact: </strong> With the time you spent on Netflix, you could have {this.getRuntimeFunFact()}</p>
               </div>
               <Row className="justify-content-center">
                 <Col data-aos="zoom-out">
@@ -184,7 +185,7 @@ export class AllResults extends React.Component {
                 </Col>
               </Row>
               <div>
-                  <p><strong> Fun Fact: </strong> {this.getGenreFunFact()}</p>
+                  <p><strong style={{color: 'red'}}> Fun Fact: </strong> {this.getGenreFunFact()}</p>
               </div>
               <Row className="justify-content-center">
                 <Col data-aos="zoom-out">
@@ -192,7 +193,7 @@ export class AllResults extends React.Component {
                 </Col>
               </Row>
               <div>
-                  <p><strong> Fun Fact: </strong> The most obscure film of all time is something you have never heard of.</p>
+                  <p><strong style={{color: 'red'}}> Fun Fact: </strong> The most obscure film of all time is something you have never heard of.</p>
               </div>
               {this.state.username.length > 0 ? (<div> <p> Interested in sharing your results with a friend?</p>
               <Button className="mt-5 mb-5"
@@ -206,19 +207,9 @@ export class AllResults extends React.Component {
               </Row>
               <div>
                 <p>
-                  <strong> Fun Fact: </strong> Netflix is available in nearly every country in the world except China, Crimea, North Korea, and Syria.
+                  <strong style={{color: 'red'}}> Fun Fact: </strong> Netflix is available in nearly every country in the world except China, Crimea, North Korea, and Syria.
                 </p>
               </div>
-              <small>
-                Want to learn more about the RoastFLIX algorithm?{' '}
-                <a
-                  href="https://soundcloud.com/user-21005105-429685994/netflix-ba-boom"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Click Here
-                </a>
-              </small>
               {this.state.username.length > 0 ? (
                 <div>
                   {' '}
@@ -239,6 +230,16 @@ export class AllResults extends React.Component {
               ) : (
                 <div> </div>
               )}
+              <div className='mt-5 mb-3' style={{fontSize: '0.8em'}}>
+                Want to learn more about the RoastFLIX algorithm?{' '}
+                <a
+                  href="https://soundcloud.com/user-21005105-429685994/netflix-ba-boom"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Click Here
+                </a>
+              </div>
             </Container>
           ) : (
             ''

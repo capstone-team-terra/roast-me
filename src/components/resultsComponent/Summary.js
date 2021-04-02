@@ -111,7 +111,7 @@ export default function Summary(props) {
           </h2>
         </Col>
       </Row>
-      <Row className="justify-content-center mt-5" data-aos="zoom-in-up">
+      <Row className="justify-content-center mt-5 mb-5" data-aos="zoom-in-up">
         <Col xs sm md={6}>
           <div style={{width: '70%', margin: 'auto'}}>
             <VisibilitySensor>
@@ -132,10 +132,10 @@ export default function Summary(props) {
           </div>
         </Col>
         <Col xs sm md={6}>
-          <p className="mt-10">
+        <p className="mt-3 mb-2">
             Based on the following data, you are {totalScore}% basic!
           </p>
-          <p className="mt-5">
+          <p className="mt-3">
             {' '}
             <strong>Here's how your score breaks down:</strong>
           </p>

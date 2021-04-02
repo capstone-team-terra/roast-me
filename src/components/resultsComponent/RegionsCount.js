@@ -34,7 +34,10 @@ export default function RegionsCount(props) {
       fontSize: 25
     },
     legend: {
-      display: true
+      display: true,
+      labels: {
+        fontColor: 'rgb(224, 228, 228)',
+      }
     },
     scale: {
       display: true,
@@ -53,7 +56,7 @@ export default function RegionsCount(props) {
   return (
     <ChartCard>
       <Card>
-        <Card.Title style={{textAlign: 'center', fontSize: 30}}>
+        <Card.Title style={{textAlign: 'center', fontSize: 45}}>
           Where your favorites come from{' '}
         </Card.Title>
         <div>
