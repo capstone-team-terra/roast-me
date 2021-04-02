@@ -95,7 +95,7 @@ export default function ViewCount(props) {
   return (
     <ChartCard>
       <Card>
-        <Card.Title style={{textAlign: 'center', fontSize: 45}}>
+        <Card.Title style={{textAlign: 'center', fontSize: 40}}>
           Number of times you watched Netflix{' '}
         </Card.Title>
         <div>

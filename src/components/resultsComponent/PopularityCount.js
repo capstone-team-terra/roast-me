@@ -32,6 +32,7 @@ export default function ShowsCount(props) {
       display: true,
       labels: {
         fontColor: 'rgb(224, 228, 228)',
+        fontSize: 18
       }
     },
     rotation: 1 * Math.PI,
@@ -40,7 +41,7 @@ export default function ShowsCount(props) {
   return (
     <ChartCard>
       <Card>
-        <Card.Title style={{textAlign: 'center', fontSize: 45}}>
+        <Card.Title style={{textAlign: 'center', fontSize: 40}}>
           How mainstream your tastes are{' '}
         </Card.Title>
         <div>
@@ -51,11 +52,9 @@ export default function ShowsCount(props) {
             {Math.ceil(percents[0])}%
           </span>{' '}
           of what you watched was pretty mainstream.
-        </p>
-        <p style={{fontSize: '15px', fontStyle: 'italic'}}>
+          <br />
           The most popular were: <strong>{topShow.join(' - ')}</strong>.
-        </p>
-        <p style={{fontSize: '15px', fontStyle: 'italic'}}>
+          <br />
           Your hidden gems were: <strong>{bottomShow.join(' - ')}</strong>.
         </p>
         <p

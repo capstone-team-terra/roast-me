@@ -6,12 +6,15 @@ import Chatbot from './chatComponent/ChatbotPage'
 
 const results = {
   genres: {
+    data:{
     Action: 10,
     Comedy: 120,
     Fantasy: 20,
     Animation: 10,
     Drama: 10,
     Crime: 30
+    },
+    score: 20
   },
   views: {
     Friends: 300,
@@ -34,8 +37,8 @@ const results = {
     '2020-08': 80,
     '2020-09': 260,
     '2020-10': 150,
-    '2020-11': 290,
-    '2020-12': 390,
+    '2020-11': 250,
+    '2020-12': 310,
     '2021-01': 200,
     '2021-02': 120,
     '2021-03': 180
@@ -53,7 +56,7 @@ const results = {
       '2020-09': 2570,
       '2020-10': 2700,
       '2020-11': 2999,
-      '2020-12': 2400,
+      '2020-12': 4600,
       '2021-01': 3300,
       '2021-02': 4050,
       '2021-03': 4500
@@ -93,19 +96,11 @@ const Sample = () => {
         <UploadPage />
       ) : (
         <div>
-          <Navbar
-            style={{
-              position: 'absolute',
-              top: 30,
-              left: 10,
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'space-around'
-            }}
+          <Navbar expand='md'
+            style={{position: 'absolute',
+            top: 40,
+            right: 90}}
           >
-            <Navbar.Brand>
-              <h1 className="netflix-red">Your Netflix Statistics</h1>
-            </Navbar.Brand>
             <Nav>
               <h1 style={{fontSize: 18, marginTop: '5px'}}>
                 Ready to try with your own data?

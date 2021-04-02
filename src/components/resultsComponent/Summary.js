@@ -43,7 +43,7 @@ export default function Summary(props) {
             <CircularProgressbar
               value={100}
               text={`${yearJoined}`}
-              strokeWidth={2}
+              strokeWidth={3}
               styles={buildStyles({
                 pathTransitionDuration: 1.5,
                 pathColor: '#db0000',
@@ -61,7 +61,7 @@ export default function Summary(props) {
             <CircularProgressbar
               value={100}
               text={`${totalTime}hrs`}
-              strokeWidth={2}
+              strokeWidth={3}
               styles={buildStyles({
                 pathTransitionDuration: 1.5,
                 pathColor: '#db0000',
@@ -79,7 +79,7 @@ export default function Summary(props) {
             <CircularProgressbar
               value={100}
               text={`${totalViews}`}
-              strokeWidth={2}
+              strokeWidth={3}
               styles={buildStyles({
                 pathTransitionDuration: 1.5,
                 pathColor: '#db0000',
