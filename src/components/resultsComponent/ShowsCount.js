@@ -79,7 +79,7 @@ export default function ShowsCount(props) {
   return (
     <ChartCard>
       <Card>
-        <Card.Title style={{textAlign: 'center', fontSize: 30}}>
+        <Card.Title style={{textAlign: 'center', fontSize: 40}}>
           Top 5 most viewed shows
         </Card.Title>
         <div>

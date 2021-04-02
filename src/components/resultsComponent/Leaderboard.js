@@ -1,7 +1,7 @@
 import React from 'react'
 import {Card, Table} from 'react-bootstrap'
 import ChartCard from './Styling/ChartTheme'
-import { MDBDataTable } from 'mdbreact';
+// import { MDBDataTable } from 'mdbreact';
 
 export default function Leaderboard(props) {
   const {leaderboard} = props
@@ -44,7 +44,7 @@ export default function Leaderboard(props) {
         <Card.Title style={{textAlign: 'center', fontSize: 30}}>
           Leaderboard
         </Card.Title>
-        <MDBDataTable
+        {/* <MDBDataTable
         scrollY
         maxHeight="200px"
         striped
@@ -53,7 +53,7 @@ export default function Leaderboard(props) {
         hover
         data={data}
         className='table-light'
-      />
+      /> */}
       </Card>
     </ChartCard>
   )

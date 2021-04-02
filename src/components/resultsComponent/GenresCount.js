@@ -37,7 +37,7 @@ export default function GenresCount(props) {
         <ChartCard>
           <Card>
             <div>
-              <Card.Title style={{textAlign: 'center', fontSize: 30}}>
+              <Card.Title style={{textAlign: 'center', fontSize: 40}}>
                 Top 5 most viewed genres
               </Card.Title>
             </div>
@@ -46,15 +46,19 @@ export default function GenresCount(props) {
               data={state}
               options={{
                 legend: {
-                  display: true
+                  display: true,
+                  labels: {
+                    fontColor: 'rgb(224, 228, 228)',
+                    fontSize: 18
+                  }
                 }
               }}
-              width={500}
-              height={300}
+              width={400}
+              height={200}
             />
 
             <div>
-              <p style={{fontSize: '20px', fontStyle: 'italic'}}>
+              <p style={{fontSize: '20px', fontStyle: 'italic'}} className="mt-2">
                 You watched{' '}
                 <span style={{color: 'rgba(234, 87, 102)'}}>
                   {sorted[0][1]}{' '}

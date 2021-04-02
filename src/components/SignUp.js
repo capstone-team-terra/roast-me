@@ -38,11 +38,12 @@ class SignUp extends React.Component {
       <Container>
         {this.state.signedUp ? (
           <UploadPage username={this.state.username} />
-        ) : (<Row>
-          <Col>
+        ) : (
+        <Row>
+          <Col xs sm md ={12} lg={6} className="mb-5">
+            <p>We need a username to keep track of your results:</p>
             <form>
             <div className="form-group">
-              <label>We need a username to keep track of your results:</label>
                 <Row className="mt-3">
                   <input type="userName" placeholder=" Your Username Here" />
                 </Row>
@@ -55,7 +56,7 @@ class SignUp extends React.Component {
                     Submit
                   </Button>
                 </Row>
-              
+
             </div>
             {this.state.attempt ? (
               <div>
@@ -66,20 +67,22 @@ class SignUp extends React.Component {
             ) : (
               <div> </div>
             )}
-          </form></Col>
-          <Col>
-              You may proceed anonymously. Just keep in mind your results will not be shareable if you do not have a username. <br />
+          </form>
+          </Col>
+          <Col xs sm md={12} lg={6}>
+              <p>You may proceed anonymously. Just keep in mind your results will not be shareable if you do not have a username. And you will not be represented on the leaderboard.</p>
               <Button
                     type="button"
                     variant="outline-light"
                     onClick={this.handleAnon}
                   >
-                    Proceed anonymously.
+                    Proceed anonymously
               </Button>
-          </Col></Row>
+           </Col>
+        </Row>
         )}
       </Container>
-      
+
     )
   }
 }

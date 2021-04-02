@@ -26,8 +26,14 @@ export default function ShowsCount(props) {
     maintainAspectRatio: false,
     title: {
       display: true,
-      // text: "Popularity",
       fontSize: 25
+    },
+    legend: {
+      display: true,
+      labels: {
+        fontColor: 'rgb(224, 228, 228)',
+        fontSize: 18
+      }
     },
     rotation: 1 * Math.PI,
     circumference: 1 * Math.PI
@@ -35,22 +41,20 @@ export default function ShowsCount(props) {
   return (
     <ChartCard>
       <Card>
-        <Card.Title style={{textAlign: 'center', fontSize: 30}}>
+        <Card.Title style={{textAlign: 'center', fontSize: 40}}>
           How mainstream your tastes are{' '}
         </Card.Title>
         <div>
-          <Doughnut data={data} options={options} width={600} height={450} />
+          <Doughnut data={data} options={options} width={550} height={400} />
         </div>
-        <p style={{fontSize: '20px', fontStyle: 'italic'}}>
+        <p style={{fontSize: '20px', fontStyle: 'italic'}} className="mt-2">
           <span style={{color: 'rgba(234, 87, 102)'}}>
             {Math.ceil(percents[0])}%
           </span>{' '}
           of what you watched was pretty mainstream.
-        </p>
-        <p style={{fontSize: '15px', fontStyle: 'italic'}}>
+          <br />
           The most popular were: <strong>{topShow.join(' - ')}</strong>.
-        </p>
-        <p style={{fontSize: '15px', fontStyle: 'italic'}}>
+          <br />
           Your hidden gems were: <strong>{bottomShow.join(' - ')}</strong>.
         </p>
         <p

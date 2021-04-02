@@ -128,7 +128,7 @@ class ChatbotPage extends React.Component {
       },
       {
         id: '10',
-        message: `You watched ${totalEpisodes} episodes of Netflix shows.`,
+        message: `You watched ${totalEpisodes} vids on Netflix.`,
         trigger: '11',
         delay: 3000
       },
@@ -147,7 +147,7 @@ class ChatbotPage extends React.Component {
       },
       {
         id: '13',
-        message: `Got it.`,
+        message: `I think we both know.`,
         trigger: '15',
         delay: 3000
       },
