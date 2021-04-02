@@ -75,11 +75,11 @@ export class AllResults extends React.Component {
       .then(function(snapshot) {
         // const obj = snapshot.val()
         // console.log('obj', obj)
-        snapshot.forEach(user => {
+        snapshot.forEach((user, index) => {
           const username = user.key
           const score = user.val().score
           console.log('user', username, 'score', score)
-          leaderboard.push({[`${username}`]: score})
+          leaderboard.push({username: username, score: score})
         })
       })
     console.log('Leaderboard', leaderboard)

@@ -1,6 +1,7 @@
 import React from 'react'
 import {Card, Table} from 'react-bootstrap'
 import ChartCard from './Styling/ChartTheme'
+import { MDBDataTable } from 'mdbreact';
 
 export default function Leaderboard(props) {
   const {leaderboard} = props
@@ -8,8 +9,34 @@ export default function Leaderboard(props) {
   console.log('leaderboard isArray', Array.isArray(leaderboard))
   console.log('leaderboard[0]', leaderboard[0])
 
-  const userNames = leaderboard.reverse()
-  console.log(userNames)
+  const leaderRows = []
+  for (let i = leaderboard.length - 1; i >= 0; i--)
+    leaderRows.push({id: leaderboard.length - i, username: leaderboard[i].username, score: leaderboard[i].score})
+  console.log(leaderRows)
+
+    const data = {
+      columns: [
+        {
+          label: 'Ranking',
+          field: 'id',
+          sort: 'asc',
+          // width: 150
+        },
+        {
+          label: 'Username',
+          field: 'username',
+          sort: 'asc',
+          // width: 270
+        },
+        {
+          label: 'Score',
+          field: 'score',
+          sort: 'asc',
+          // width: 200
+        }
+      ],
+      rows: leaderRows
+    };
 
   return (
     <ChartCard>
@@ -17,25 +44,16 @@ export default function Leaderboard(props) {
         <Card.Title style={{textAlign: 'center', fontSize: 30}}>
           Leaderboard
         </Card.Title>
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Username</th>
-              <th>Score</th>
-            </tr>
-          </thead>
-          <tbody>
-            {userNames.map((user, i) => {
-              return (
-                <tr key={i}>
-                  <td>{Object.keys(user)[0]}</td>
-                  <td>{Object.values(user)[0]}</td>
-                </tr>
-              )
-            })}
-          </tbody>
-        </Table>
+        <MDBDataTable
+        scrollY
+        maxHeight="200px"
+        striped
+        bordered
+        small
+        hover
+        data={data}
+        className='table-light'
+      />
       </Card>
     </ChartCard>
   )
