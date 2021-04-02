@@ -53,8 +53,11 @@ code {
 #footer{
   position: absolute;
   bottom: 10px;
+  left: 50px;
+  right: 50px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  width: 700px
 }
 
 #footer p {

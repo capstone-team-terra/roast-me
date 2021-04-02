@@ -55,7 +55,8 @@ export default function RunTime(props) {
           },
           ticks: {
             fontColor: 'rgb(224, 228, 228)',
-            fontSize: 15
+            fontSize: 15,
+            min: 0
           },
           gridLines: {
             color: 'rgb(25, 25, 25)'
@@ -84,8 +85,8 @@ export default function RunTime(props) {
   return (
     <ChartCard>
       <Card>
-        <Card.Title style={{textAlign: 'center', fontSize: 30}}>
-          Total hours you spent on Netflix
+        <Card.Title style={{textAlign: 'center', fontSize: 40}}>
+          Number of hours you spent on Netflix
         </Card.Title>
         <div>
           <Bar data={resultData} options={options} width={600} height={400} />
@@ -99,7 +100,7 @@ export default function RunTime(props) {
           <p style={{fontSize: '15px', fontStyle: 'italic'}}>
             That is about{' '}
             <span style={{color: 'rgba(234, 87, 102)'}}>{sumDays}</span> days
-            (or {sumMonth} months) you wasted.. Just saying.
+            you wasted.. Just saying.
           </p>
           <p
             style={{
