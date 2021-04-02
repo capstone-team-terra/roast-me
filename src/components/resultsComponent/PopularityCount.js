@@ -45,7 +45,7 @@ export default function ShowsCount(props) {
           How mainstream your tastes are{' '}
         </Card.Title>
         <div>
-          <Doughnut data={data} options={options} width={550} height={400} />
+          <Doughnut data={data} options={options} width={500} height={360} />
         </div>
         <p style={{fontSize: '20px', fontStyle: 'italic'}} className="mt-2">
           <span style={{color: 'rgba(234, 87, 102)'}}>

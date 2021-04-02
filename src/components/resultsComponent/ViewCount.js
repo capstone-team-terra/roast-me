@@ -16,10 +16,10 @@ export default function ViewCount(props) {
   //peak month
   let max = 0
   let maxMonth = ''
-  for (let key in result){
-    if (result[key] > max){
-      max = result[key]
-      maxMonth = key
+  for (let i=0; i<pastYear.length; i++){
+    if (pastYear[i][1] > max){
+      max= pastYear[i][1]
+      maxMonth = pastYear[i][0]
     }
   }
   maxMonth = moment(maxMonth).format('MMMM')
