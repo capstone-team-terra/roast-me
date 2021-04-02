@@ -6,12 +6,15 @@ import Chatbot from './chatComponent/ChatbotPage'
 
 const results = {
   genres: {
-    Action: 10,
-    Comedy: 120,
-    Fantasy: 20,
-    Animation: 10,
-    Drama: 10,
-    Crime: 30
+    data: {
+      Action: 10,
+      Comedy: 120,
+      Fantasy: 20,
+      Animation: 10,
+      Drama: 10,
+      Crime: 30
+    },
+    score: 20
   },
   views: {
     Friends: 300,

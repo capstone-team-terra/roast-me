@@ -24,7 +24,7 @@ export class AllResults extends React.Component {
       username: '',
       copied: false,
       leaderboard: [],
-      showLeaderboard: false
+      showLeaderboard: false,
     }
     this.handleDoneTyping = this.handleDoneTyping.bind(this)
     this.handleShowResult = this.handleShowResult.bind(this)
@@ -60,11 +60,13 @@ export class AllResults extends React.Component {
       genres.score + regions.score + popularity.score + runtime.score
     )
     const scoresRef = app.database().ref('scores')
-    await app
-      .database()
-      .ref()
-      .child(this.state.username)
-      .update({score: totalScore})
+    if (this.state.username.length > 0) {
+      await app
+        .database()
+        .ref()
+        .child(this.state.username)
+        .update({score: totalScore})
+    }
     let leaderboard = []
 
     await app
@@ -240,7 +242,7 @@ export class AllResults extends React.Component {
                 Leaderboard
               </Button>
               {this.state.showLeaderboard ? (
-                <Leaderboard leaderboard={this.state.leaderboard} />
+                <Leaderboard leaderboard={this.state.leaderboard} username={this.state.username}/>
               ) : (
                 ''
               )}
