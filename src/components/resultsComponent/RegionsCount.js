@@ -4,7 +4,6 @@ import {Card} from 'react-bootstrap'
 import ChartCard from './Styling/ChartTheme'
 
 export default function RegionsCount(props) {
-  console.log('regions props', props)
   const {regions, score} = props.result
 
   const regionsCount = Object.entries(regions)

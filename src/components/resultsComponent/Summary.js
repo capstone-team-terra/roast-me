@@ -12,7 +12,6 @@ export default function Summary(props) {
     aos.init({duration: 2000})
   }, [])
   const {popularity, runtime, genres, regions, viewcount} = props
-  console.log('PROPS', props)
   const totalScore = Math.floor(
     genres.score + regions.score + popularity.score + runtime.score
   )
