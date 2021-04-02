@@ -58,9 +58,12 @@ class LogIn extends React.Component {
       .ref()
       .child(username)
       .once('value', async snap => {
+        console.log('snap', snap)
         if (snap.exists()) {
           this.setState({loading: true,})
-          const downloadURL = snap.val()
+          console.log('value', snap.val())
+          const downloadURL = snap.val().file
+          console.log('downloadUrl', downloadURL)
           const res = await fetch('/handleUpload', {
             method: 'POST',
             headers: {
