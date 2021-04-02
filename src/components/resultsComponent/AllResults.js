@@ -75,16 +75,13 @@ export class AllResults extends React.Component {
       .orderByChild('score')
       .once('value')
       .then(function(snapshot) {
-        // const obj = snapshot.val()
-        // console.log('obj', obj)
+
         snapshot.forEach((user, index) => {
           const username = user.key
           const score = user.val().score
-          console.log('user', username, 'score', score)
           leaderboard.push({username: username, score: score})
         })
       })
-    console.log('Leaderboard', leaderboard)
     this.setState({
       leaderboard: leaderboard,
       showLeaderboard: true
@@ -284,7 +281,6 @@ export class AllResults extends React.Component {
       )
     ) : (
       <div>
-        {/* <Button onClick={() => this.handleDoneTyping()}>Testing</Button> */}
         <Typewriter
           onInit={typewriter => {
             typewriter

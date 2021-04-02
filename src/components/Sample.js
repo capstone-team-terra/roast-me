@@ -128,7 +128,6 @@ const Sample = () => {
               <Chatbot result={results} />
             </Container>
           ) : (
-            // <Button onClick={() => setTypingDone(true)}>Testing</Button>
             <Typewriter
               onInit={typewriter => {
                 typewriter

@@ -7,22 +7,13 @@ import { MDBDataTable } from 'mdbreact';
 export default function Leaderboard(props) {
   const {leaderboard, username} = props
   let ranking = 0
-  console.log('inside leaderboard component', leaderboard)
-  console.log('leaderboard isArray', Array.isArray(leaderboard))
-  console.log('leaderboard[0]', leaderboard[0])
 
-  const leaderRows = [] // [natrat, mulan]
+  const leaderRows = []
   for (let i = leaderboard.length - 1; i >= 0; i--) { // 3
     leaderRows.push({id: leaderboard.length - i, username: leaderboard[i].username, score: leaderboard[i].score})
-    console.log('leaderboard length]', leaderboard.length)
-    console.log('leaderRows', leaderRows)
     if (leaderRows[leaderRows.length - 1]['username'] === username)
       ranking = leaderRows[leaderRows.length - 1]['id']
   }
-  console.log('username', username)
-  console.log('score', ranking)
-
-  console.log(leaderRows)
 
     const data = {
       columns: [
@@ -30,19 +21,16 @@ export default function Leaderboard(props) {
           label: 'Ranking',
           field: 'id',
           sort: 'asc',
-          // width: 150
         },
         {
           label: 'Username',
           field: 'username',
           sort: 'asc',
-          // width: 270
         },
         {
           label: 'Score',
           field: 'score',
           sort: 'asc',
-          // width: 200
         }
       ],
       rows: leaderRows
