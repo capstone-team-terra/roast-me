@@ -26,7 +26,6 @@ def resultsForUser(user):
 
 @app.route("/handleUpload", methods=['POST'])
 def handleFileUpload():
-    print('REQUEST ----> ', request.data)
     data = request.data.decode("utf-8")
     df = pickleThis(data)
     mostViewed = viewsCounter(data)

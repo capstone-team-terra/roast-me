@@ -133,7 +133,11 @@ export default function Summary(props) {
         <Col xs sm md={6}>
         <p className="mt-3 mb-2">
             Based on the following data, you are {totalScore}% basic!
+            <br/> What is <a href="https://www.urbandictionary.com/define.php?term=Basic"
+                    target="_blank"
+                    rel="noopener noreferrer">basic</a>?
           </p>
+
           <p className="mt-3">
             {' '}
             <strong>Here's how your score breaks down:</strong>

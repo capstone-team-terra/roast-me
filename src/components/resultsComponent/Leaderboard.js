@@ -42,7 +42,7 @@ export default function Leaderboard(props) {
         <Card.Title style={{textAlign: 'center', fontSize: 30}}>
           Leaderboard
         </Card.Title>
-
+        <p>Users are ranked from most to least basic. The higher the score, the more questionable your taste is.</p>
         {username.length > 0 ? (
           <p>
           Congratulations, <span style={{color: 'rgba(82, 179, 217, 1)'}}>{username}</span>! You are <span style={{color: 'rgba(234, 87, 102)'}}>#{ranking}{' '}</span> in our leaderboard!

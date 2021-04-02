@@ -1,4 +1,3 @@
-import pickle
 import pandas as pd
 
 
@@ -21,10 +20,7 @@ def pickleThis(data):
         lambda x: 'Movie' if pd.isnull(x['season']) else 'TV Show', axis=1)
     df_merged = df_origin_history.merge(
         df_origin_ratings, how="inner", on="root_lower")
-
-    # df_merged = df_merged.drop_duplicates(subset='primaryTitle', keep='first')
     df_merged = df_merged[["primaryTitle", "averageRating", "numVotes",
                            "Title", "show_type", "runtimeMinutes", "genres", "tconst", "Date", "country"]]
     return df_merged
-#mergedData_file = 'merged_data.pkl'
-#pickle.dump(df_merged, open(mergedData_file, 'wb'))
+

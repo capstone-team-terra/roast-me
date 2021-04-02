@@ -1,11 +1,8 @@
 import pandas as pd
-import pickle
 from collections import Counter
 
 
 def genresCounter(df):
-    #df = pd.read_pickle(
-    #    './merged_data.pkl')
     list_of_genres = df['genres'].to_list()
     df['genre_ls'] = df['genres'].apply(
         lambda s: s.split(",") if type(s) == str else s)

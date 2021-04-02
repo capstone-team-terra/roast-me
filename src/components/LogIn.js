@@ -32,7 +32,7 @@ class LogIn extends React.Component {
       .once('value', async snap => {
         if (snap.exists()) {
           this.setState({loading: true})
-          const downloadURL = snap.val()
+          const downloadURL = snap.val().file
           const res = await fetch('/handleUpload', {
             method: 'POST',
             headers: {
@@ -51,19 +51,15 @@ class LogIn extends React.Component {
 
   handleLogIn(e) {
     e.preventDefault()
-    console.log('STATE ---->', this.state)
     const username = this.state.value
     app
       .database()
       .ref()
       .child(username)
       .once('value', async snap => {
-        console.log('snap', snap)
         if (snap.exists()) {
           this.setState({loading: true,})
-          console.log('value', snap.val())
           const downloadURL = snap.val().file
-          console.log('downloadUrl', downloadURL)
           const res = await fetch('/handleUpload', {
             method: 'POST',
             headers: {
