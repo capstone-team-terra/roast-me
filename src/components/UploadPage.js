@@ -65,7 +65,6 @@ class UploadPage extends React.Component {
         .set({'file': downloadURL, 'score': 0})
     }
 
-    console.log('RES ---->', res)
     var jsonRes = await res.json()
     this.setState({loaded: true, result: jsonRes, loading: false})
   }
