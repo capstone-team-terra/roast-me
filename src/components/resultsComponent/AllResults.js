@@ -27,7 +27,7 @@ export class AllResults extends React.Component {
       username: '',
       copied: false,
       leaderboard: [],
-      showLeaderboard: false,
+      // showLeaderboard: false,
     }
     this.handleDoneTyping = this.handleDoneTyping.bind(this)
     this.handleShowResult = this.handleShowResult.bind(this)
@@ -40,8 +40,9 @@ export class AllResults extends React.Component {
     this.setState({
       result: this.props.result,
       loaded: true,
-      username: this.props.username ? this.props.username : ''
+      username: this.props.username ? this.props.username : '',
     })
+
   }
   handleDoneTyping() {
     let audio = new Audio(
@@ -52,15 +53,17 @@ export class AllResults extends React.Component {
   }
 
   handleShowResult() {
+    console.log('show state', this.state)
+    this.loadLeaderboard()
     this.setState({showResult: true})
   }
 
   async loadLeaderboard() {
+    console.log('load state', this.state)
     const {genres, regions, popularity, runtime} = this.state.result
     const totalScore = Math.floor(
       genres.score + regions.score + popularity.score + runtime.score
     )
-    const scoresRef = app.database().ref('scores')
     if (this.state.username.length > 0) {
       await app
         .database()
@@ -85,7 +88,7 @@ export class AllResults extends React.Component {
       })
     this.setState({
       leaderboard: leaderboard,
-      showLeaderboard: true
+      // leaderboard: [{'username': 'toad', 'score': 12}]
     })
   }
   copyToClipboard() {
@@ -198,18 +201,8 @@ export class AllResults extends React.Component {
                   <strong style={{color: 'red'}}> Fun Fact: </strong> Netflix is available in nearly every country in the world except China, Crimea, North Korea, and Syria.
                 </p>
               </div>
-              <Button
-                className="mt-5 mb-5"
-                variant="outline-light"
-                onClick={this.loadLeaderboard}
-              >
-                Leaderboard
-              </Button>
-              {this.state.showLeaderboard ? (
-                <Leaderboard leaderboard={this.state.leaderboard} username={this.state.username}/>
-              ) : (
-                ''
-              )}
+
+              <Leaderboard leaderboard={this.state.leaderboard} username={this.state.username}/>
               {this.state.username.length > 0 ? (
                 <div>
                   {' '}
