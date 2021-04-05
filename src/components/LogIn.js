@@ -5,7 +5,6 @@ import {app} from '../base'
 import Loading from './resultsComponent/Loading'
 
 class LogIn extends React.Component {
-
   constructor() {
     super()
     this.state = {
@@ -21,11 +20,43 @@ class LogIn extends React.Component {
   }
 
   componentDidMount() {
-    let path = window.location.pathname.split("/");
+    let path = window.location.pathname.split('/')
     if (path.length > 2) {
-      let username = path.slice(2).join('');
-      this.setState({ value: username });
+      let username = path.slice(2).join('')
+      this.setState({value: username})
       app
+        .database()
+        .ref()
+        .child(username)
+        .once('value', async snap => {
+          if (snap.exists()) {
+            this.setState({loading: true})
+            const downloadURL = snap.val.file()
+            const res = await fetch('/handleUpload', {
+              method: 'POST',
+              headers: {
+                'Access-Control-Allow-Origin': '*'
+              },
+              body: downloadURL
+            })
+            const jsonRes = await res.json()
+            this.setState({
+              loggedIn: true,
+              result: jsonRes,
+              loading: false,
+              loaded: true
+            })
+          } else {
+            this.setState({attempt: true})
+          }
+        })
+    }
+  }
+
+  handleLogIn(e) {
+    e.preventDefault()
+    const username = this.state.value
+    app
       .database()
       .ref()
       .child(username)
@@ -41,53 +72,39 @@ class LogIn extends React.Component {
             body: downloadURL
           })
           const jsonRes = await res.json()
-          this.setState({loggedIn: true, result: jsonRes, loading: false, loaded: true})
-        } else {
-          this.setState({attempt: true})
-        }
-      })
-    }
-  }
-
-  handleLogIn(e) {
-    e.preventDefault()
-    const username = this.state.value
-    app
-      .database()
-      .ref()
-      .child(username)
-      .once('value', async snap => {
-        if (snap.exists()) {
-          this.setState({loading: true,})
-          const downloadURL = snap.val().file
-          const res = await fetch('/handleUpload', {
-            method: 'POST',
-            headers: {
-              'Access-Control-Allow-Origin': '*'
-            },
-            body: downloadURL
+          this.setState({
+            loggedIn: true,
+            result: jsonRes,
+            loading: false,
+            loaded: true
           })
-          const jsonRes = await res.json()
-          this.setState({loggedIn: true, result: jsonRes, loading: false, loaded: true})
         } else {
           this.setState({attempt: true})
         }
       })
   }
 
-    render() {
+  render() {
     return (
       <Container>
         {this.state.loaded && this.state.loggedIn ? (
-          <AllResults result={this.state.result} username={this.state.value}/>
+          <AllResults result={this.state.result} username={this.state.value} />
         ) : this.state.loading ? (
-          <Loading />) : (
-            <form>
+          <Loading />
+        ) : (
+          <form>
             <div className="form-group">
               <label>Enter your Username to access your results:</label>
               <Col>
                 <Row className="mt-3">
-                  <input type="userName" placeholder="Your Username Here" value={this.state.value} onChange={(e) => {this.setState({value: e.target.value })}}/>
+                  <input
+                    type="userName"
+                    placeholder="Your Username Here"
+                    value={this.state.value}
+                    onChange={e => {
+                      this.setState({value: e.target.value})
+                    }}
+                  />
                 </Row>
                 <Row className="mt-4">
                   <Button
@@ -106,7 +123,7 @@ class LogIn extends React.Component {
               <div> </div>
             )}
           </form>
-          )}
+        )}
       </Container>
     )
   }
