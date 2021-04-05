@@ -60,7 +60,7 @@ export default function RegionsCount(props) {
           Where your favorites come from{' '}
         </Card.Title>
         <div>
-          <Polar data={data} options={options} width={800} height={500} />
+          <Polar data={data} options={options} width={700} height={400} />
         </div>
         <p style={{fontSize: '20px', fontStyle: 'italic'}}>
           <span style={{color: 'rgba(234, 87, 102)'}}>{percents[0]}%</span> of
