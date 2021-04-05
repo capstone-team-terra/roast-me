@@ -53,13 +53,11 @@ export class AllResults extends React.Component {
   }
 
   handleShowResult() {
-    console.log('show state', this.state)
     this.loadLeaderboard()
     this.setState({showResult: true})
   }
 
   async loadLeaderboard() {
-    console.log('load state', this.state)
     const {genres, regions, popularity, runtime} = this.state.result
     const totalScore = Math.floor(
       genres.score + regions.score + popularity.score + runtime.score
