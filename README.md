@@ -13,6 +13,10 @@ You can try out the deplyed version here: https://roastflix-309106.uk.r.appspot.
 5 python main.py<br />
 6 Navigate to http://127.0.0.1:8080/ in your browser<br />
 
+### if you want to run tests
+7 git checkout remote testing<br />
+8 py.test<br />
+
 ## Technologies Used
 FE: React, Node, Chart.js, Bootstrap  <br />
 BE: Flask, Firebase, Real-time database, Pandas, IMDB API, Netflix API <br />
